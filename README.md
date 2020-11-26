@@ -21,3 +21,14 @@
 * ## https://github.com/tonsky/FiraCode/wiki/VS-Code-Instructions
 
 * ## Blibliota CSS  [Styled Components](https://styled-components.com/)
+
+* conf uteis.
+```
+  "explorer.compactFolders":false ,
+  
+    "material-icon-theme.folders.associations": {    
+        "Aside": "Stack",
+        "Content": "Job",
+        "MainHeader": "Pipe",
+    }
+```
