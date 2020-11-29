@@ -10,20 +10,23 @@
     yarn create react-app my-app --template typescript
 
 ## Links Uteis.
-* ##  https://classic.yarnpkg.com/pt-BR/docs/install#windows-stable
+* ###  https://classic.yarnpkg.com/pt-BR/docs/install#windows-stable
 
-* ## https://reactjs.org/docs/create-a-new-react-app.html
+* ### https://reactjs.org/docs/create-a-new-react-app.html
 
-* ## https://create-react-app.dev/docs/adding-typescript/
+* ### https://create-react-app.dev/docs/adding-typescript/
 
-* ## https://www.flaticon.com/packs/social-network-logo-collection
+* ### https://www.flaticon.com/packs/social-network-logo-collection
 
-* ## https://github.com/tonsky/FiraCode/wiki/VS-Code-Instructions
+* ### https://github.com/tonsky/FiraCode/wiki/VS-Code-Instructions
 
-* ## Blibliota CSS  [Styled Components](https://styled-components.com/)
+* ### Blibliota CSS  [Styled Components](https://styled-components.com/)
 * ### https://github.com/dowglasmaia/styled-theming
+* ### https://www.w3schools.com/charsets/ref_emoji_smileys.asp
 
-* conf uteis.
+* ### https://usehooks.com/useMemo/
+
+* #### conf uteis.
 ```
   "explorer.compactFolders":false ,
   
@@ -33,6 +36,6 @@
         "MainHeader": "Pipe",
     }
 ```
-* https://www.figma.com/file/nOGmUkhcINJt6nd57R4ENu/Minha-Carteira?node-id=0%3A1
+* ### https://www.figma.com/file/nOGmUkhcINJt6nd57R4ENu/Minha-Carteira?node-id=0%3A1
 
-* [Git do Instrutor do Curso](https://github.com/rodrigorgtic/minha-carteira-dashboard)
+
