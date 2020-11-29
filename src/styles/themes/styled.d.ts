@@ -1,17 +1,17 @@
 import 'styled-components';
 
-/* Definindo a Tipagem do DefaultTheme*/
+/* Definindo a Tipagem e Sobrescrevendo o DefaultTheme */
 
 declare module 'styled-components'{
-export interface DefaultTheme {
+export interface DefaultTheme  {
     title: string,
-    color: {
+    colors: {
       primary: string,
       secundary: string,
       tertiary: string,
   
       white: string,
-      black: string,F
+      black: string,
       gray: string,
   
       success: string,

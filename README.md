@@ -21,6 +21,7 @@
 * ## https://github.com/tonsky/FiraCode/wiki/VS-Code-Instructions
 
 * ## Blibliota CSS  [Styled Components](https://styled-components.com/)
+* ### https://github.com/dowglasmaia/styled-theming
 
 * conf uteis.
 ```
@@ -33,3 +34,5 @@
     }
 ```
 * https://www.figma.com/file/nOGmUkhcINJt6nd57R4ENu/Minha-Carteira?node-id=0%3A1
+
+* [Git do Instrutor do Curso](https://github.com/rodrigorgtic/minha-carteira-dashboard)
