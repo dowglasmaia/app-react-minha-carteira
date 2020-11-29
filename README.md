@@ -26,6 +26,8 @@
 
 * ### https://usehooks.com/useMemo/
 
+* ### https://www.npmjs.com/package/react-switch
+
 * #### conf uteis.
 ```
   "explorer.compactFolders":false ,
