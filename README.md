@@ -28,6 +28,9 @@
 
 * ### https://www.npmjs.com/package/react-switch
 
+* ### https://github.com/react-icons/react-icons
+* #### https://react-icons.github.io/react-icons/
+
 * #### conf uteis.
 ```
   "explorer.compactFolders":false ,
