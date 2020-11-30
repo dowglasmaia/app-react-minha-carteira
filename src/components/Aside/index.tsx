@@ -8,6 +8,7 @@ import {
     MdExitToApp
 } from 'react-icons/md';
 
+/* Componentes */
 import {
     Container,
     Header,
@@ -33,7 +34,7 @@ const Aside: React.FC = () => {
                     <MdDashboard/> Dashboard
                 </MenuItemLink>
 
-                <MenuItemLink href="#" title="Entradas">
+                <MenuItemLink href="#">
                     <MdSubdirectoryArrowRight/> Entradas
                 </MenuItemLink>
 

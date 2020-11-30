@@ -3,6 +3,7 @@ import React from 'react';
 
 import {Container,ToggleLabel, ToggleSelector} from './style';
 
+/* Componente de Troca de Valor do Thema */
 const Toggle: React.FC = ()=> {
     return (
         <Container>

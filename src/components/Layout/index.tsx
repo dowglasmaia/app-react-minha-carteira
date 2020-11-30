@@ -6,7 +6,8 @@ import MainHeader from '../MainHeader';
 import Aside from '../Aside';
 import Content from '../Content';
 
-const Layout: React.FC = () => {
+/* {children} para injetar componentes filhos */
+const Layout: React.FC = ({ children }) => {
     return (
         <Grid>
             {/* MainHeader */}
@@ -16,7 +17,9 @@ const Layout: React.FC = () => {
             <Aside />
 
             {/* Content */}
-            <Content />
+            <Content >
+             { children }
+            </Content>
 
         </Grid>
     );
