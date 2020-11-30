@@ -2,32 +2,26 @@ import React from 'react';
 
 import { Container, TitleContainer, Controllers } from './style';
 
-import SelectInput from '../../shared/SelectInput';
 
-const ContentHeader: React.FC = () => {
 
-    const options = [
-        { value: 'Dowglas Maia', label: 'Dowglas Maia' },
-        { value: 'kayron Maia', label: 'Kayron Maia' },
-        { value: 'kaymilly Maia', label: 'kaymilly Maia' }
-    ];
+interface IContentHeaderprops {
+    title: string;
+    lineColor: string;
+    children: React.ReactNode; // recebe um componente como tipo.
+}
 
-    const Frutas = [
-        { value: 1, label: 'Maçã' },
-        { value: 2, label: 'Laranja' },
-        { value: 3, label: 'Manga' }
-    ];
-
+const ContentHeader: React.FC<IContentHeaderprops> = ({
+    title, lineColor, children
+}) => {
 
     return (
-        <Container>
-            <TitleContainer>
-                <h1>Título</h1>
+        <Container >
+            <TitleContainer lineColor={lineColor}>
+               <h1> {title} </h1>
             </TitleContainer>
 
             <Controllers>
-                <SelectInput options={options} />
-                <SelectInput options={Frutas} />
+               {children}
             </Controllers>
 
         </Container>
