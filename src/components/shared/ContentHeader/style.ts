@@ -11,22 +11,19 @@ export const Container = styled.div`
   margin-bottom: 25px;
 `;
 
-export const TitleContainer = styled.div`  
+export const TitleContainer = styled.div`
   /* estilizando só o h1 dentro do container */
   > h1 {
     color: ${(props) => props.theme.colors.white};
 
     /* Mostrada Depois da descrição . neste caso uma borda abaixo do texto. */
     &::after {
-        content:'';
-        display:block;
-        width:55px;
-        border-bottom:10px solid ${propos => propos.theme.colors.warning};
+      content: "";
+      display: block;
+      width: 55px;
+      border-bottom: 10px solid ${(propos) => propos.theme.colors.warning};
     }
-  };
-
+  }
 `;
 
-export const Controllers = styled.div`
-  border: 1px solid black;
-`;
+export const Controllers = styled.div``;
