@@ -1,8 +1,24 @@
 import React from 'react';
 
+import { Container } from './styles';
+import ContentHeader from '../../components/shared/ContentHeader';
+
+import SelectInput from '../../components/shared/SelectInput';
+
 const List: React.FC = () => {
+    const options = [
+        { value: 'Dowglas Maia', label: 'Dowglas Maia' },
+        { value: 'kayron Maia', label: 'Kayron Maia' },
+        { value: 'kaymilly Maia', label: 'kaymilly Maia' }
+    ];
+
+  
     return (
-        <h2>List</h2>
+        <Container>
+            <ContentHeader title ="Listagem" lineColor="#F79390">
+                <SelectInput options={options} />
+            </ContentHeader>
+        </Container>
     );
 }
 
