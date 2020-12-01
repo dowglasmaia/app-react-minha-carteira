@@ -6,5 +6,7 @@ export const Container = styled.div`
     border-radius: 5px;
 
     margin-left:7px;
+    //background-color:${props => props.theme.colors.gray};
+    //color: #fff;
   }
 `;

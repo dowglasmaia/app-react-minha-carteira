@@ -21,13 +21,140 @@ const List: React.FC = () => {
             </ContentHeader>
 
             <Content>
-                <HistoryFinanceCard 
-                   cardColor="#4E41F0"
-                   tagColor="#E44C4E" 
-                   title="Conta de Luz"
-                   subTitle="01/12/2020"
-                   amount="R$ 79,00"
-                ></HistoryFinanceCard>
+                {/* Cartão de Historico Financeiro */}
+                <HistoryFinanceCard
+                    cardColor="#313862"
+                    tagColor="#E44C4E"
+                    title="Conta de Luz"
+                    subTitle="01/12/2020"
+                    amount="R$ 79,00"
+                />
+
+                {/* Cartão de Historico Financeiro */}
+                <HistoryFinanceCard
+                    cardColor="#313862"
+                    tagColor="#E44C4E"
+                    title="Conta de Luz"
+                    subTitle="01/12/2020"
+                    amount="R$ 79,00"
+                />
+
+                {/* Cartão de Historico Financeiro */}
+                <HistoryFinanceCard
+                    cardColor="#313862"
+                    tagColor="#E44C4E"
+                    title="Conta de Luz"
+                    subTitle="01/12/2020"
+                    amount="R$ 79,00"
+                />
+
+                {/* Cartão de Historico Financeiro */}
+                <HistoryFinanceCard
+                    cardColor="#4E41F0"
+                    tagColor="#E44C4E"
+                    title="Conta de Luz"
+                    subTitle="01/12/2020"
+                    amount="R$ 79,00"
+                />
+
+                {/* Cartão de Historico Financeiro */}
+                <HistoryFinanceCard
+                    cardColor="#4E41F0"
+                    tagColor="#E44C4E"
+                    title="Conta de Luz"
+                    subTitle="01/12/2020"
+                    amount="R$ 79,00"
+                />
+
+                {/* Cartão de Historico Financeiro */}
+                <HistoryFinanceCard
+                    cardColor="#4E41F0"
+                    tagColor="#E44C4E"
+                    title="Conta de Luz"
+                    subTitle="01/12/2020"
+                    amount="R$ 79,00"
+                />
+
+                {/* Cartão de Historico Financeiro */}
+                <HistoryFinanceCard
+                    cardColor="#4E41F0"
+                    tagColor="#E44C4E"
+                    title="Conta de Luz"
+                    subTitle="01/12/2020"
+                    amount="R$ 79,00"
+                />
+
+                {/* Cartão de Historico Financeiro */}
+                <HistoryFinanceCard
+                    cardColor="#4E41F0"
+                    tagColor="#E44C4E"
+                    title="Conta de Luz"
+                    subTitle="01/12/2020"
+                    amount="R$ 79,00"
+                />
+
+                {/* Cartão de Historico Financeiro */}
+                <HistoryFinanceCard
+                    cardColor="#4E41F0"
+                    tagColor="#E44C4E"
+                    title="Conta de Luz"
+                    subTitle="01/12/2020"
+                    amount="R$ 79,00"
+                />
+
+                {/* Cartão de Historico Financeiro */}
+                <HistoryFinanceCard
+                    cardColor="#4E41F0"
+                    tagColor="#E44C4E"
+                    title="Conta de Luz"
+                    subTitle="01/12/2020"
+                    amount="R$ 79,00"
+                />
+
+                {/* Cartão de Historico Financeiro */}
+                <HistoryFinanceCard
+                    cardColor="#4E41F0"
+                    tagColor="#E44C4E"
+                    title="Conta de Luz"
+                    subTitle="01/12/2020"
+                    amount="R$ 79,00"
+                />
+
+                {/* Cartão de Historico Financeiro */}
+                <HistoryFinanceCard
+                    cardColor="#4E41F0"
+                    tagColor="#E44C4E"
+                    title="Conta de Luz"
+                    subTitle="01/12/2020"
+                    amount="R$ 79,00"
+                />
+
+                {/* Cartão de Historico Financeiro */}
+                <HistoryFinanceCard
+                    cardColor="#4E41F0"
+                    tagColor="#E44C4E"
+                    title="Conta de Luz"
+                    subTitle="01/12/2020"
+                    amount="R$ 79,00"
+                />
+
+                {/* Cartão de Historico Financeiro */}
+                <HistoryFinanceCard
+                    cardColor="#4E41F0"
+                    tagColor="#E44C4E"
+                    title="Conta de Luz"
+                    subTitle="01/12/2020"
+                    amount="R$ 79,00"
+                />
+
+                {/* Cartão de Historico Financeiro */}
+                <HistoryFinanceCard
+                    cardColor="#4E41F0"
+                    tagColor="#E44C4E"
+                    title="Conta de Luz"
+                    subTitle="01/12/2020"
+                    amount="R$ 79,00"
+                />
 
             </Content>
         </Container>
