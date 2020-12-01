@@ -2,16 +2,14 @@ import React from 'react';
 
 import { ContainerHistory, Tag } from './styles'
 
-interface IHistoryFinaceCard {
-    cardColor: string;
+interface IHistoryFinaceCard {   
     tagColor: string;
     title: string;
     subTitle: string;
     amount: string
 }
 
-const HistoryFinaceCard: React.FC<IHistoryFinaceCard> = ({
-    cardColor,
+const HistoryFinaceCard: React.FC<IHistoryFinaceCard> = ({   
     tagColor,
     title,
     subTitle,
@@ -19,7 +17,7 @@ const HistoryFinaceCard: React.FC<IHistoryFinaceCard> = ({
 }) => {
     return (
         /* montando o card */
-        <ContainerHistory color={cardColor}>
+        <ContainerHistory >
             <Tag color={tagColor} />
             <div>
                 <span>{title}</span>

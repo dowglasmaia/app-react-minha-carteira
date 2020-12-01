@@ -1,16 +1,12 @@
 import styled from "styled-components";
 
-interface IContainerHistoryProps {
-  color: string;
-}
-
 interface ITagProps {
   color: string;
 }
 
 /* Criando Style para o Card */
-export const ContainerHistory = styled.li<IContainerHistoryProps>`
-  background-color: ${(props) => props.color};
+export const ContainerHistory = styled.li`
+  background-color: ${(props) => props.theme.colors.tertiary};
   list-style: none;
   border-radius: 5px;
   margin: 10px 0;
