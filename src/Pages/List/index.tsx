@@ -1,9 +1,10 @@
 import React from 'react';
 
-import { Container } from './styles';
+import { Container, Content } from './styles';
 import ContentHeader from '../../components/shared/ContentHeader';
 
 import SelectInput from '../../components/shared/SelectInput';
+import HistoryFinanceCard from '../../components/HistoryFinanceCard';
 
 const List: React.FC = () => {
     const options = [
@@ -12,12 +13,23 @@ const List: React.FC = () => {
         { value: 'kaymilly Maia', label: 'kaymilly Maia' }
     ];
 
-  
+
     return (
         <Container>
-            <ContentHeader title ="Listagem" lineColor="#F79390">
+            <ContentHeader title="Saídas" lineColor="#F79390">
                 <SelectInput options={options} />
             </ContentHeader>
+
+            <Content>
+                <HistoryFinanceCard 
+                   cardColor="#4E41F0"
+                   tagColor="#E44C4E" 
+                   title="Conta de Luz"
+                   subTitle="01/12/2020"
+                   amount="R$ 79,00"
+                ></HistoryFinanceCard>
+
+            </Content>
         </Container>
     );
 }

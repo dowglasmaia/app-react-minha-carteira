@@ -12,15 +12,11 @@ interface ISelectInputProps {
 const SelectInput: React.FC<ISelectInputProps> = ({ options }) => {
     return (
         <Container>
-            
-            <select>
-                {   /* Passaando as opções dinamicamente */
-                    options.map(option => (
-                        <option value="{option.value}">{option.label}</option>
-                    ))
-                }
+            <select>{
+                options.map(option => (
+                    <option value="{option.value}">{option.label}</option>
+                ))}
             </select>
-
         </Container>
     );
 }
