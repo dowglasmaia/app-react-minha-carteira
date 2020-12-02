@@ -21,7 +21,9 @@
 * ### https://github.com/tonsky/FiraCode/wiki/VS-Code-Instructions
 
 * ### Blibliota CSS  [Styled Components](https://styled-components.com/)
+
 * ### https://github.com/dowglasmaia/styled-theming
+
 * ### https://www.w3schools.com/charsets/ref_emoji_smileys.asp
 
 * ### https://usehooks.com/useMemo/
@@ -29,7 +31,12 @@
 * ### https://www.npmjs.com/package/react-switch
 
 * ### https://github.com/react-icons/react-icons
-* #### https://react-icons.github.io/react-icons/
+
+* ### https://react-icons.github.io/react-icons/
+
+* ### https://reactrouter.com/web/guides/quick-start
+
+* ### https://www.npmjs.com/package/react-router-dom
 
 * #### conf uteis.
 ```

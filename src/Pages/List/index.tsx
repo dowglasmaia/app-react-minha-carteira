@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 
 import { Container, Content, Filters } from './styles';
 import ContentHeader from '../../components/shared/ContentHeader';
@@ -6,7 +6,25 @@ import ContentHeader from '../../components/shared/ContentHeader';
 import SelectInput from '../../components/shared/SelectInput';
 import HistoryFinanceCard from '../../components/HistoryFinanceCard';
 
-const List: React.FC = () => {
+
+interface IRouteParams {
+    match: {
+        params: {
+            type: string; /*O nome do parametro deve ser o mesmo definido na rota, neste caso foi 'type'. ex: /list/:type */
+        }
+    }
+}
+
+/* O match e disponibilizando graças a rootDom, para pegar parametros da rota */
+const List: React.FC<IRouteParams> = ({ match }) => {
+
+    const { type } = match.params;
+
+    /* Hook useMemo - extrutura: useMemo( () => {},[]); */
+    const title = useMemo(() => {
+        return type === 'entry-balance' ? 'Entradas' : 'Saídas';
+    }, [type]);
+
     const months = [
         { value: 1, label: 'Janeiro' },
         { value: 2, label: 'Fevereiro' },
@@ -22,13 +40,13 @@ const List: React.FC = () => {
 
     return (
         <Container>
-            <ContentHeader title="Saídas" lineColor="#F79390">
+            <ContentHeader title={title} lineColor="#F79390">
                 <SelectInput options={months} />
                 <SelectInput options={years} />
             </ContentHeader>
 
             <Filters>
-                <button type="button" className="tag-filter tag-recorrentes"> Recorrentes </button> 
+                <button type="button" className="tag-filter tag-recorrentes"> Recorrentes </button>
 
                 <button type="button" className="tag-filter tag-eventuais"> Eventuais </button>
             </Filters>
@@ -42,8 +60,6 @@ const List: React.FC = () => {
                     subTitle="01/12/2020"
                     amount="R$ 79,00"
                 />
-
-                
             </Content>
         </Container>
     );
