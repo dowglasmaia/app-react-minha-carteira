@@ -5,7 +5,9 @@ import ContentHeader from '../../components/shared/ContentHeader';
 import SelectInput from '../../components/shared/SelectInput';
 import HistoryFinanceCard from '../../components/HistoryFinanceCard';
 import formatCurrency from '../../utils/formatCurrency';
+import formatDate from '../../utils/formatDate';
 
+/* data b/
 /* data base mok*/
 import gains from '../../repositories/gains';
 import expenses from '../../repositories/expenses';
@@ -64,7 +66,7 @@ const List: React.FC<IRouteParams> = ({ match }) => {
                 description: item.description,
                 amountFormatted: formatCurrency( Number(item.amount) ),
                 frequency: item.frequency,
-                dataFormatted: item.date,
+                dataFormatted: formatDate(item.date),
                 tagColor: item.frequency === 'recorrente' ? '#E44C4E' : '#4E41F0', // usando ifTernario para ver qual cor usar na tagColor:
             }
         })
