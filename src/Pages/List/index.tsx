@@ -2,9 +2,9 @@ import React, { useMemo, useState, useEffect } from 'react';
 
 import { Container, Content, Filters } from './styles';
 import ContentHeader from '../../components/shared/ContentHeader';
-
 import SelectInput from '../../components/shared/SelectInput';
 import HistoryFinanceCard from '../../components/HistoryFinanceCard';
+import formatCurrency from '../../utils/formatCurrency';
 
 /* data base mok*/
 import gains from '../../repositories/gains';
@@ -28,15 +28,11 @@ interface IData {
     tagColor: string
 }
 
-
-
 /* O match e disponibilizando graças a rootDom, para pegar parametros da rota */
 const List: React.FC<IRouteParams> = ({ match }) => {
 
     const [data, setData] = useState<IData[]>([]);
-
     const { type } = match.params;
-
 
     /* Hook useMemo - extrutura: useMemo( () => {},[]); */
     /* const title = useMemo(() => {
@@ -65,9 +61,8 @@ const List: React.FC<IRouteParams> = ({ match }) => {
         const response = listData.map(item => {
             return {
                 id: String(Math.random() * data.length),// criando ID unico de forma aleatoria.
-               
                 description: item.description,
-                amountFormatted: item.amount,
+                amountFormatted: formatCurrency( Number(item.amount) ),
                 frequency: item.frequency,
                 dataFormatted: item.date,
                 tagColor: item.frequency === 'recorrente' ? '#E44C4E' : '#4E41F0', // usando ifTernario para ver qual cor usar na tagColor:
@@ -104,7 +99,6 @@ const List: React.FC<IRouteParams> = ({ match }) => {
 
                 <button type="button" className="tag-filter tag-eventuais"> Eventuais </button>
             </Filters>
-
 
             <Content>
                 {/* Cartão de Historico Financeiro */}
