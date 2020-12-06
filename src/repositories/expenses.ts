@@ -41,11 +41,11 @@ export default [
   {"description":"Compras do mês",        "amount":"559.15","type":"saída","frequency":"recorrente","date":"2020-06-25"},
   {"description":"Parcela do Celular 5/5","amount":"150.99","type":"saída","frequency":"eventual",  "date":"2020-06-26"},
   {"description":"Perfume",               "amount":"250.00","type":"saída","frequency":"eventual",  "date":"2020-06-21"},
-  {"description":"Energia elétrica",      "amount":"250.00","type":"saída","frequency":"recorrente","date":"2020-07-10"},
-  {"description":"Água",                  "amount":"90.00", "type":"saída","frequency":"recorrente","date":"2020-07-15"},
-  {"description":"Telefone",              "amount":"99.99", "type":"saída","frequency":"recorrente","date":"2020-07-23"},
-  {"description":"Plano de Saúde",        "amount":"300.00","type":"saída","frequency":"recorrente","date":"2020-07-23"},
-  {"description":"Compras do mês",        "amount":"700.00","type":"saída","frequency":"recorrente","date":"2020-07-25"},
-  {"description":"Cafeteira",             "amount":"250.00","type":"saída","frequency":"eventual",  "date":"2020-07-26"},
-  {"description":"Pizza",                 "amount":"60.00", "type":"saída","frequency":"eventual",  "date":"2020-07-19"}
+  {"description":"Energia elétrica",      "amount":"250.00","type":"saída","frequency":"recorrente","date":"2020-12-10"},
+  {"description":"Água",                  "amount":"90.00", "type":"saída","frequency":"recorrente","date":"2020-12-15"},
+  {"description":"Telefone",              "amount":"99.99", "type":"saída","frequency":"recorrente","date":"2020-12-23"},
+  {"description":"Plano de Saúde",        "amount":"300.00","type":"saída","frequency":"recorrente","date":"2020-12-23"},
+  {"description":"Compras do mês",        "amount":"700.00","type":"saída","frequency":"recorrente","date":"2020-12-25"},
+  {"description":"Cafeteira",             "amount":"250.00","type":"saída","frequency":"eventual",  "date":"2018-12-26"},
+  {"description":"Pizza",                 "amount":"60.00", "type":"saída","frequency":"eventual",  "date":"2019-12-19"}
 ]

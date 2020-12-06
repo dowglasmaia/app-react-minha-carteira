@@ -11,11 +11,11 @@ const Dashboard: React.FC = () => {
         { value: 'kaymilly Maia', label: 'kaymilly Maia' }
     ];
 
-  
+
     return (
         <Container>
-            <ContentHeader title ="Dashboard" lineColor="#F7931B">
-                <SelectInput options={options} />
+            <ContentHeader title="Dashboard" lineColor="#F7931B">
+                <SelectInput options={options} onChange={() => { }} />
             </ContentHeader>
         </Container>
     );
