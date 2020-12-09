@@ -11,6 +11,9 @@ import formatDate from '../../utils/formatDate';
 /* data base mok*/
 import gains from '../../repositories/gains';
 import expenses from '../../repositories/expenses';
+import listOfMonths from '../../utils/months'
+
+import { uuid } from 'uuidv4';
 
 
 interface IRouteParams {
@@ -77,7 +80,7 @@ const List: React.FC<IRouteParams> = ({ match }) => {
 
         const formattedData = filteredData.map(item => {
             return {
-                id: String(Math.random() * data.length + item.amount),// criando ID unico de forma aleatoria.
+                id: uuid(), //setando um ID
                 description: item.description,
                 amountFormatted: formatCurrency(Number(item.amount)),
                 frequency: item.frequency,
@@ -87,23 +90,38 @@ const List: React.FC<IRouteParams> = ({ match }) => {
         })
         setData(formattedData);
     }, [listData, monthSelected, yaerSelected]);
+    
 
-    const months = [
-        { value: 6, label: 'Junho' },
-        { value: 7, label: 'Julho' },
-        { value: 8, label: 'Agosto' },
-        { value: 9, label: 'Setembro' },
-        { value: 10, label: 'Outubro' },
-        { value: 11, label: 'Novembro' },
-        { value: 12, label: 'Dezembro' },
-    ];
+    //listar e adicionando somente os Meses que o usuario tenha lançamentos
+    const months = useMemo(() => {
+       return listOfMonths.map((month, index) =>{
+           return {
+               value:index +1,
+               label:month
+           }           
+       });      
+     
+    }, []);
 
-    const years = [
-        { value: 2018, label: 2018 },
-        { value: 2019, label: 2019 },
-        { value: 2020, label: 2020 },
-    ];
+    //listar e adicionando somente os Anos que o usuario tenha lançamentos
+    const years = useMemo(() => {
+        let uniqueYears: number[] = [];
 
+        listData.forEach(item => {
+            const date = new Date(item.date);
+            const year = date.getFullYear();
+
+            if (!uniqueYears.includes(year)) {
+                uniqueYears.push(year);
+            }
+        });
+        return uniqueYears.map(year => {
+            return {
+                value: year,
+                label: year
+            }
+        });
+    }, [listData]);
 
 
 

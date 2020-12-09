@@ -38,6 +38,8 @@
 
 * ### https://www.npmjs.com/package/react-router-dom
 
+* ### https://www.npmjs.com/package/uuidv4
+
 * #### conf uteis.
 ```
   "explorer.compactFolders":false ,
