@@ -41,6 +41,8 @@ const List: React.FC<IRouteParams> = ({ match }) => {
     /* armazenando o Mês e o Ano selecionado */
     const [monthSelected, setMonthSelected] = useState<string>(String(new Date().getMonth() + 1)); // sempre carrear com o mes atual
     const [yaerSelected, setYaerSelected] = useState<string>(String(new Date().getFullYear()));
+    const [selectedFrequency, setSelectedFrequency] = useState<string[]>(['recorrente', 'eventual']);  //inicializa o array com os dois valores.
+
 
     const { type } = match.params;
 
@@ -68,14 +70,17 @@ const List: React.FC<IRouteParams> = ({ match }) => {
 
     //useEffect e chamado sempre que a pagina e carregada, e tem a mesma estrutua do useMemmo
     useEffect(() => {
-
         /* Filtrando os Dados para exibição na Tela */
         const filteredData = listData.filter(item => {
             let date = new Date(item.date);
             let month = String(date.getMonth() + 1);
             let yaer = String(date.getFullYear());
+            
+            console.log(item.frequency);
 
-            return month === monthSelected && yaer === yaerSelected; // retonar os dados de acordo com o Ano e Mes selecionado.
+            return month === monthSelected 
+                         && yaer === yaerSelected 
+                         && selectedFrequency.includes(item.frequency); // retonar os dados de acordo com o Ano e Mes selecionado.
         });
 
         const formattedData = filteredData.map(item => {
@@ -85,22 +90,22 @@ const List: React.FC<IRouteParams> = ({ match }) => {
                 amountFormatted: formatCurrency(Number(item.amount)),
                 frequency: item.frequency,
                 dataFormatted: formatDate(item.date),
-                tagColor: item.frequency === 'recorrente' ? '#E44C4E' : '#4E41F0', // usando ifTernario para ver qual cor usar na tagColor:
+                tagColor: item.frequency === 'recorrente' ? '#4E41F0': '#E44C4E' , // usando ifTernario para ver qual cor usar na tagColor:
             }
         })
         setData(formattedData);
-    }, [listData, monthSelected, yaerSelected]);
-    
+    }, [listData, monthSelected, yaerSelected, selectedFrequency]);
+
 
     //listar e adicionando somente os Meses que o usuario tenha lançamentos
     const months = useMemo(() => {
-       return listOfMonths.map((month, index) =>{
-           return {
-               value:index +1,
-               label:month
-           }           
-       });      
-     
+        return listOfMonths.map((month, index) => {
+            return {
+                value: index + 1,
+                label: month
+            }
+        });
+
     }, []);
 
     //listar e adicionando somente os Anos que o usuario tenha lançamentos
@@ -123,6 +128,18 @@ const List: React.FC<IRouteParams> = ({ match }) => {
         });
     }, [listData]);
 
+    /* FUNÇÃO PARA PEGAR OS TIPO DE FINANÇAS */
+    const handleFrequencyClick = (frequency: string) => {
+        const alreadySeleted = selectedFrequency.findIndex(item => item === frequency);
+
+        if (alreadySeleted >= 0) {
+            const filtered = selectedFrequency.filter(item => item != frequency); // desmarcando o butão seleionado.
+            setSelectedFrequency(filtered);
+        } else {
+            setSelectedFrequency((prev) => [...prev, frequency]);  // marcando o butão desejado
+        }
+    }
+
 
 
     return (
@@ -142,9 +159,27 @@ const List: React.FC<IRouteParams> = ({ match }) => {
             </ContentHeader>
 
             <Filters>
-                <button type="button" className="tag-filter tag-recorrentes"> Recorrentes </button>
+                <button
+                    type="button"
+                    className=
+                        {`tag-filter tag-recorrentes
+                            ${selectedFrequency.includes('recorrente') && 'tag-actived'} 
+                        `}
+                    onClick={() => handleFrequencyClick('recorrente')}
+                >
+                    Recorrentes
+                </button>
 
-                <button type="button" className="tag-filter tag-eventuais"> Eventuais </button>
+                <button
+                    type="button"
+                    className=
+                        {`tag-filter tag-eventuais
+                            ${selectedFrequency.includes('eventual') && 'tag-actived'} 
+                        `}
+                    onClick={() => handleFrequencyClick('eventual')}
+                >
+                    Eventuais
+                </button>
             </Filters>
 
             <Content>
