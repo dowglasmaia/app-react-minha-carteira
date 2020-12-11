@@ -41,8 +41,8 @@ interface IData {
 const List: React.FC<IRouteParams> = ({ match }) => {
 
     /* armazenando o Mês e o Ano selecionado */
-    const [monthSelected, setMonthSelected] = useState<string>(String(new Date().getMonth() + 1)); // sempre carrear com o mes atual
-    const [yaerSelected, setYaerSelected] = useState<string>(String(new Date().getFullYear()));
+    const [monthSelected, setMonthSelected] = useState<number>(new Date().getMonth() + 1); // sempre carrear com o mes atual
+    const [yaerSelected, setYaerSelected] = useState<number>(new Date().getFullYear());
 
     const [selectedFrequency, setFilterSelectedFrequency] = useState<string[]>(['recorrente', 'eventual']);  //inicializa o array com os dois valores.
 
@@ -70,10 +70,8 @@ const List: React.FC<IRouteParams> = ({ match }) => {
         /* Filtrando os Dados para exibição na Tela */
         const filteredData = pageData.data.filter(item => {
             let date = new Date(item.date);
-            let month = String(date.getMonth() + 1);
-            let yaer = String(date.getFullYear());
-
-            console.log(item.frequency);
+            let month = date.getMonth() + 1;
+            let yaer = date.getFullYear();
 
             return month === monthSelected
                 && yaer === yaerSelected
@@ -139,18 +137,36 @@ const List: React.FC<IRouteParams> = ({ match }) => {
         }
     }
 
+    const handleMonthSelected = (month: string) => {
+        try {
+            let parseMonth = Number(month);
+            setMonthSelected(parseMonth);
+        } catch (error) {
+            throw new Error('invalid month value. Is accept 0 -24.');
+        }
+    }
+
+    const handleYaerSelected = (yaer: string) => {
+        try {
+            let parseYaer = Number(yaer);
+            setYaerSelected(parseYaer);
+        } catch (error) {
+            throw new Error('invalid yaer value. Is accept Integer  Number.');
+        }
+    }
+
     return (
         <Container>
             <ContentHeader title={pageData.title} lineColor={pageData.lineColor}>
                 <SelectInput
                     options={months}
-                    onChange={(e) => setMonthSelected(e.target.value)}
+                    onChange={(e) => handleMonthSelected(e.target.value)}
                     defaultValue={monthSelected}
                 />
 
                 <SelectInput
                     options={years}
-                    onChange={(e) => setYaerSelected(e.target.value)}
+                    onChange={(e) => handleYaerSelected(e.target.value)}
                     defaultValue={yaerSelected}
                 />
             </ContentHeader>
