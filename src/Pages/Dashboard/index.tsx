@@ -4,6 +4,8 @@ import ContentHeader from '../../components/shared/ContentHeader';
 import SelectInput from '../../components/shared/SelectInput';
 import WalletBox from '../../components/shared/CardBox'
 
+import MessageBox from '../../components/shared/MessageBox'
+
 import {
     Container,
     Content
@@ -107,7 +109,9 @@ const Dashboard: React.FC = () => {
                     amount={5000.00}
                     footerLabel="Atualizando com Base nas Entradas e Saídas. "
                     icon="arrowDown"
-                ></WalletBox>
+                />
+
+                <MessageBox/>
 
                 
             </Content>

@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 
+/* biblioteca para formata e da efeitos a valores monetarios e numericos */
 import CountUp from 'react-countup';
 
 import { Container } from './styles';
