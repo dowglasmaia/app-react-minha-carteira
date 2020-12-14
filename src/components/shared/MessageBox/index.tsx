@@ -4,6 +4,10 @@ import { Container } from './styles';
 import happyImg from '../../../assets/happy.svg';
 
 
+interface IMessageBoxProps{
+    
+}
+
 
 const MessageBox: React.FC = () => {
     return (
