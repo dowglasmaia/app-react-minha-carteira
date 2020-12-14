@@ -6,6 +6,9 @@ import WalletBox from '../../components/shared/CardBox'
 
 import MessageBox from '../../components/shared/MessageBox'
 
+import happyImg from '../../assets/happy.svg';
+import sadImg from '../../assets/sad.svg';
+
 import {
     Container,
     Content
@@ -111,9 +114,14 @@ const Dashboard: React.FC = () => {
                     icon="arrowDown"
                 />
 
-                <MessageBox/>
+                <MessageBox
+                    title="Muito Bem!"
+                    description="Sua carteira está positiva."
+                    footerText="Continue assim. Considere investir o seu saldo."
+                    icon={happyImg}
+                />
 
-                
+
             </Content>
 
         </Container>
