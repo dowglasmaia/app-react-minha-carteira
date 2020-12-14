@@ -40,6 +40,8 @@
 
 * ### https://www.npmjs.com/package/uuidv4
 
+* ### https://www.npmjs.com/package/react-countup
+
 * #### conf uteis.
 ```
   "explorer.compactFolders":false ,

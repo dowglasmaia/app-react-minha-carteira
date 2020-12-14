@@ -1,8 +1,14 @@
-import React , {useState, useMemo} from 'react';
+import React, { useState, useMemo } from 'react';
 
-import { Container } from './styles';
 import ContentHeader from '../../components/shared/ContentHeader';
 import SelectInput from '../../components/shared/SelectInput';
+import WalletBox from '../../components/shared/CardBox'
+
+import {
+    Container,
+    Content
+} from './styles';
+
 import expenses from '../../repositories/expenses';
 import gains from '../../repositories/gains';
 import listOfMonths from '../../utils/months';
@@ -12,8 +18,8 @@ const Dashboard: React.FC = () => {
     const [monthSelected, setMonthSelected] = useState<number>(new Date().getMonth() + 1); // sempre carrear com o mes atual
     const [yaerSelected, setYaerSelected] = useState<number>(new Date().getFullYear());
 
-      //listar e adicionando somente os Meses que o usuario tenha lançamentos
-      const months = useMemo(() => {
+    //listar e adicionando somente os Meses que o usuario tenha lançamentos
+    const months = useMemo(() => {
         return listOfMonths.map((month, index) => {
             return {
                 value: index + 1,
@@ -24,9 +30,9 @@ const Dashboard: React.FC = () => {
 
     //listar e adicionando somente os Anos que o usuario tenha lançamentos
     const years = useMemo(() => {
-        let uniqueYears: number[] = [];       
+        let uniqueYears: number[] = [];
 
-        [...expenses , ...gains].forEach(item => {
+        [...expenses, ...gains].forEach(item => {
             const date = new Date(item.date);
             const year = date.getFullYear();
 
@@ -64,8 +70,8 @@ const Dashboard: React.FC = () => {
 
     return (
         <Container>
-            <ContentHeader title="Dashboard" lineColor="#F7931B">              
-            <SelectInput
+            <ContentHeader title="Dashboard" lineColor="#F7931B">
+                <SelectInput
                     options={months}
                     onChange={(e) => handleMonthSelected(e.target.value)}
                     defaultValue={monthSelected}
@@ -78,7 +84,36 @@ const Dashboard: React.FC = () => {
                 />
 
             </ContentHeader>
+            <Content>
+                <WalletBox
+                    color="#4E41F0"
+                    title="Saldo"
+                    amount={4000.00}
+                    footerLabel="Atualizando com Base nas Entradas e Saídas. "
+                    icon="dolar"
+                ></WalletBox>
+
+                <WalletBox
+                    color="#F7931B"
+                    title="Entradas"
+                    amount={9000.00}
+                    footerLabel="Atualizando com Base nas Entradas e Saídas. "
+                    icon="arrowUp"
+                ></WalletBox>
+
+                <WalletBox
+                    color="#E44C4E"
+                    title="Saídas"
+                    amount={5000.00}
+                    footerLabel="Atualizando com Base nas Entradas e Saídas. "
+                    icon="arrowDown"
+                ></WalletBox>
+
+                
+            </Content>
+
         </Container>
+
     );
 
 }
