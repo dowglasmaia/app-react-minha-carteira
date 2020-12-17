@@ -4,7 +4,8 @@ import ContentHeader from '../../components/shared/ContentHeader';
 import SelectInput from '../../components/shared/SelectInput';
 import WalletBox from '../../components/shared/CardBox'
 
-import MessageBox from '../../components/shared/MessageBox'
+import MessageBox from '../../components/shared/MessageBox';
+import PieCharts from '../../components/shared/PieChart'
 
 import happyImg from '../../assets/happy.svg';
 import sadImg from '../../assets/sad.svg';
@@ -193,6 +194,8 @@ const Dashboard: React.FC = () => {
                     footerText={message.footerText}
                     icon={message.icon}
                 />
+
+                <PieCharts></PieCharts>
 
 
             </Content>
