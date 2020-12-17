@@ -114,26 +114,36 @@ const Dashboard: React.FC = () => {
 
     }, [monthSelected, yearSelected]); // atualiza os dados de acordo as mudanças
 
-
     /* Calculando Total do Saldo:  Entradas - Saidas = Saldo */
     const totalSaldo = useMemo(() => {
-        let total = totalRecebimento - totalDespesas;
-        let cor: string = '';
-
-        console.log(`O total é ${total}.`)
-
-        if (total >= 0) {
-            cor = '#4E41F0'
-        } else {
-            cor = '#8B0000'
-        }
-
-        return {
-            total: total,
-            tagColor: cor
-        }
-
+        return totalRecebimento - totalDespesas;
     }, [totalRecebimento, totalDespesas])
+
+    const message = useMemo(() => {
+        if (totalSaldo < 0) {
+            return {
+                title: 'Que triste!',
+                description: 'Neste mês, você gastou mas do que deveria.',
+                footerText: 'Verifique seus gastos',
+                icon: sadImg
+            }
+        } else if (totalSaldo === 0) {
+            return {
+                title: "Ufaa!",
+                description: "Neste mês você gastou exatamento o que ganhou.",
+                footerText: "Tenha cuidado tente investir um pouco.",
+                icon: happyImg
+            }
+        } else {
+            return {
+                title: "Muito Bem!",
+                description: "Sua carteira está positiva.",
+                footerText: "Continue assim. Considere investir o seu saldo.",
+                icon: happyImg
+            }
+        }
+
+    }, [totalSaldo])
 
     return (
         <Container>
@@ -154,9 +164,9 @@ const Dashboard: React.FC = () => {
 
             <Content>
                 <WalletBox
-                    color={totalSaldo.tagColor}
+                    color='#4E41F0'
                     title="Saldo"
-                    amount={totalSaldo.total}
+                    amount={totalSaldo}
                     footerLabel="Atualizando com Base nas Entradas e Saídas. "
                     icon="dolar"
                 ></WalletBox>
@@ -178,10 +188,10 @@ const Dashboard: React.FC = () => {
                 />
 
                 <MessageBox
-                    title="Muito Bem!"
-                    description="Sua carteira está positiva."
-                    footerText="Continue assim. Considere investir o seu saldo."
-                    icon={happyImg}
+                    title={message.title}
+                    description={message.description}
+                    footerText={message.footerText}
+                    icon={message.icon}
                 />
 
 
