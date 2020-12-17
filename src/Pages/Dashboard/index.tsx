@@ -21,7 +21,7 @@ import listOfMonths from '../../utils/months';
 const Dashboard: React.FC = () => {
 
     const [monthSelected, setMonthSelected] = useState<number>(new Date().getMonth() + 1); // sempre carrear com o mes atual
-    const [yaerSelected, setYaerSelected] = useState<number>(new Date().getFullYear());
+    const [yearSelected, setYaerSelected] = useState<number>(new Date().getFullYear());
 
     //listar e adicionando somente os Meses que o usuario tenha lançamentos
     const months = useMemo(() => {
@@ -58,7 +58,7 @@ const Dashboard: React.FC = () => {
         try {
             let parseMonth = Number(month);
             setMonthSelected(parseMonth);
-        } catch (error) {
+        } catch {
             throw new Error('invalid month value. Is accept 0 -24.');
         }
     }
@@ -67,11 +67,30 @@ const Dashboard: React.FC = () => {
         try {
             let parseYaer = Number(yaer);
             setYaerSelected(parseYaer);
-        } catch (error) {
+        } catch {
             throw new Error('invalid yaer value. Is accept Integer  Number.');
         }
     }
 
+    /* Pegando o Total de despesas */
+    const totalExpenses = useMemo(() => {
+        let total: number = 0;
+
+        expenses.forEach(item => {
+            const date = new Date(item.date);
+            const year = date.getFullYear();
+            const month = date.getMonth() + 1;
+
+            if (month === monthSelected && year === yearSelected) {
+                try {
+                    total += Number(item.amount);
+                } catch {
+                    throw new Error('Invalid amount!  Amount must be number.');
+                }
+            }
+        });
+        return total;
+    }, [monthSelected, yearSelected])
 
     return (
         <Container>
@@ -85,10 +104,11 @@ const Dashboard: React.FC = () => {
                 <SelectInput
                     options={years}
                     onChange={(e) => handleYaerSelected(e.target.value)}
-                    defaultValue={yaerSelected}
+                    defaultValue={yearSelected}
                 />
 
             </ContentHeader>
+
             <Content>
                 <WalletBox
                     color="#4E41F0"
@@ -109,7 +129,7 @@ const Dashboard: React.FC = () => {
                 <WalletBox
                     color="#E44C4E"
                     title="Saídas"
-                    amount={5000.00}
+                    amount={totalExpenses}
                     footerLabel="Atualizando com Base nas Entradas e Saídas. "
                     icon="arrowDown"
                 />
