@@ -61,7 +61,7 @@ const WalletBox: React.FC<IWalletBoxProps> = ({
                 separator="."
                 decimal=","
                 decimals={2}
-                preserveValue={true}
+                preserveValue={true}                
                 />
             </h1>
             <small>{footerLabel}</small>

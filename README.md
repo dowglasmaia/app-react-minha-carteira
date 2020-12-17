@@ -42,6 +42,8 @@
 
 * ### https://www.npmjs.com/package/react-countup
 
+* ### https://recharts.org/en-US/
+
 * #### conf uteis.
 ```
   "explorer.compactFolders":false ,
