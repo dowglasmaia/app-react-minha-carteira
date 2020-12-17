@@ -72,8 +72,8 @@ const Dashboard: React.FC = () => {
         }
     }
 
-    /* Pegando o Total de despesas */
-    const totalExpenses = useMemo(() => {
+    /* Calculando o Total de despesas */
+    const totalDespesas = useMemo(() => {
         let total: number = 0;
 
         expenses.forEach(item => {
@@ -90,7 +90,50 @@ const Dashboard: React.FC = () => {
             }
         });
         return total;
-    }, [monthSelected, yearSelected])
+    }, [monthSelected, yearSelected]);
+
+
+    /* Calculando Total de Recebimentos*/
+    const totalRecebimento = useMemo(() => {
+        let total: number = 0;
+
+        gains.forEach(item => {
+            const date = new Date(item.date);
+            const year = date.getFullYear();
+            const month = date.getMonth() + 1;
+
+            if (month === monthSelected && year === yearSelected) {
+                try {
+                    total += Number(item.amount); // Number Por que o Valor estar vindo como String - aqui convert String para Number 
+                } catch {
+                    throw new Error('Invalid amount!  Amount must be number.');
+                }
+            }
+        });
+        return total;
+
+    }, [monthSelected, yearSelected]); // atualiza os dados de acordo as mudanças
+
+
+    /* Calculando Total do Saldo:  Entradas - Saidas = Saldo */
+    const totalSaldo = useMemo(() => {
+        let total = totalRecebimento - totalDespesas;
+        let cor: string = '';
+
+        console.log(`O total é ${total}.`)
+
+        if (total >= 0) {
+            cor = '#4E41F0'
+        } else {
+            cor = '#8B0000'
+        }
+
+        return {
+            total: total,
+            tagColor: cor
+        }
+
+    }, [totalRecebimento, totalDespesas])
 
     return (
         <Container>
@@ -111,9 +154,9 @@ const Dashboard: React.FC = () => {
 
             <Content>
                 <WalletBox
-                    color="#4E41F0"
+                    color={totalSaldo.tagColor}
                     title="Saldo"
-                    amount={4000.00}
+                    amount={totalSaldo.total}
                     footerLabel="Atualizando com Base nas Entradas e Saídas. "
                     icon="dolar"
                 ></WalletBox>
@@ -121,7 +164,7 @@ const Dashboard: React.FC = () => {
                 <WalletBox
                     color="#F7931B"
                     title="Entradas"
-                    amount={9000.00}
+                    amount={totalRecebimento}
                     footerLabel="Atualizando com Base nas Entradas e Saídas. "
                     icon="arrowUp"
                 ></WalletBox>
@@ -129,7 +172,7 @@ const Dashboard: React.FC = () => {
                 <WalletBox
                     color="#E44C4E"
                     title="Saídas"
-                    amount={totalExpenses}
+                    amount={totalDespesas}
                     footerLabel="Atualizando com Base nas Entradas e Saídas. "
                     icon="arrowDown"
                 />
