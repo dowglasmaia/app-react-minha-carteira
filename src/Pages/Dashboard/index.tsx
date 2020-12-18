@@ -5,7 +5,7 @@ import SelectInput from '../../components/shared/SelectInput';
 import WalletBox from '../../components/shared/CardBox'
 
 import MessageBox from '../../components/shared/MessageBox';
-import PieCharts from '../../components/shared/PieChart'
+import PieCharts from '../../components/shared/PieChartBox'
 
 import happyImg from '../../assets/happy.svg';
 import sadImg from '../../assets/sad.svg';
@@ -146,6 +146,36 @@ const Dashboard: React.FC = () => {
 
     }, [totalSaldo])
 
+
+    /* Montando Dados para Exibir no Grafico */
+    const relationExpensesVersusGains = useMemo(() => {
+
+        const total = totalRecebimento + totalDespesas;
+        const percentualGanhos = (totalRecebimento / total) * 100;
+        const percentualDespesas = (totalDespesas / total) * 100;
+
+        console.log(percentualGanhos.toFixed(1), percentualDespesas.toFixed(1))
+
+        /* Informações para o Grafico*/
+        const data = [
+            {
+                name: 'Entradas',
+                value: totalRecebimento,
+                percent: Number(percentualGanhos.toFixed(1)),
+                color: '#F7931B'
+            },
+            {
+                name: 'Saídas',
+                value: totalDespesas,
+                percent: Number(percentualDespesas.toFixed(1)),
+                color: '#E44C4E'
+            }
+        ]
+
+        return data;
+    }, [totalRecebimento, totalDespesas])
+
+
     return (
         <Container>
             <ContentHeader title="Dashboard" lineColor="#F7931B">
@@ -195,8 +225,7 @@ const Dashboard: React.FC = () => {
                     icon={message.icon}
                 />
 
-                <PieCharts></PieCharts>
-
+                <PieCharts data={relationExpensesVersusGains} />
 
             </Content>
 
