@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 
 /* import do graficos   -  https://recharts.org/en-US/guide/getting-started */
 import {
     PieChart,
     Pie,
     Cell,
-    ResponsiveContainer
+    ResponsiveContainer,
+    Sector
 } from 'recharts';
 
 import {
@@ -15,7 +16,6 @@ import {
     Legend,
     SideRight
 } from './styles';
-
 
 interface IPieChartsProps {
     data: {
@@ -50,10 +50,13 @@ const PieChartBox: React.FC<IPieChartsProps> = ({ data }) => (
             {/** Montando o Grafico de Pizza */}
             <ResponsiveContainer>
                 <PieChart>
-                    <Pie data={data} dataKey="percent">
+                    <Pie data={data} dataKey="percent" innerRadius={25} label >
                         {
                             data.map((indicator) => (
-                                <Cell key={indicator.name} fill={indicator.color} />
+                                <Cell
+                                    key={indicator.name}
+                                    fill={indicator.color}
+                                    />
                             ))
                         }
                     </Pie>
