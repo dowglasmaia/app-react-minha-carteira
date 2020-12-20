@@ -151,8 +151,8 @@ const Dashboard: React.FC = () => {
     const relationExpensesVersusGains = useMemo(() => {
 
         const total = totalRecebimento + totalDespesas;
-        const percentualGanhos = (totalRecebimento / total) * 100;
-        const percentualDespesas = (totalDespesas / total) * 100;
+        const percentualGanhos = Number.isNaN((totalRecebimento / total) * 100) ? 0 : (totalRecebimento / total) * 100;
+        const percentualDespesas = Number.isNaN((totalDespesas / total) * 100) ? 0 : (totalDespesas / total) * 100;
 
         console.log(percentualGanhos.toFixed(1), percentualDespesas.toFixed(1))
 

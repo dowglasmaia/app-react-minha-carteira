@@ -47,10 +47,10 @@ const PieChartBox: React.FC<IPieChartsProps> = ({ data }) => (
         </SideLef>
 
         <SideRight>
-            {/** Montando o Grafico de Pizza */}
+            {/** Montando o Grafico de Pizza - https://recharts.org/en-US/api/PieChart  */}
             <ResponsiveContainer>
                 <PieChart>
-                    <Pie data={data} dataKey="percent" innerRadius={25} label >
+                    <Pie data={data} dataKey="percent" innerRadius={25} outerRadius={95} label >
                         {
                             data.map((indicator) => (
                                 <Cell
