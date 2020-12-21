@@ -1,5 +1,7 @@
 import React from 'react';
 
+import formatCurrency from '../../../utils/formatCurrency';
+
 import {
     ResponsiveContainer,
     LineChart,
@@ -10,13 +12,19 @@ import {
 
 } from 'recharts';
 
-import { Container } from './styles';
+import {
+    Container,
+    ChartContainer,
+    Header,
+    LegendContainer,
+    Legend
+} from './styles';
 
 interface IHistoryBoxProps {
     data: {
-        month: string;
-        amountEntry: number;
-        amountOuput: number
+        month?: string;
+        amountEntry?: number;
+        amountOuput?: number
     }[];
     lineColorAmountEntry: string;
     lineColorAmountOutput: string;
@@ -31,36 +39,50 @@ const HistoryBox: React.FC<IHistoryBoxProps> = ({
 }) => {
     return (
         <Container>
-            <h2>Histórico de Movimentação</h2>
+            <Header>
+                <h2>Histórico de Movimentação</h2>
+                <LegendContainer>
+                    <Legend key={1} color={lineColorAmountEntry}>
+                        <div></div>
+                        <span>Entrada</span>
+                    </Legend>
 
-            <ResponsiveContainer>
-                <LineChart data={data} margin={{ top: 5, right: 20, left: 20, bottom: 5 }}>
+                    <Legend key={1} color={lineColorAmountOutput}>
+                        <div></div>
+                        <span>Saída</span>
+                    </Legend>
+                </LegendContainer>
+            </Header>
 
-                    <CartesianGrid strokeDasharray="3 3" stroke="#cecece" />
-                    <XAxis dataKey="month" stroke="#cecece" />
-                    <Tooltip />
+            <ChartContainer>
+                <ResponsiveContainer>
+                    <LineChart data={data} margin={{ top: 5, right: 20, left: 20, bottom: 5 }}>
 
-                    <Line
-                        type="monotone"
-                        dataKey="amountEntry"
-                        name="Entradas"
-                        stroke={lineColorAmountEntry}
-                        strokeWidth={5}
-                        dot={{ r: 5 }}
-                        activeDot={{ r: 8 }} />
+                        <CartesianGrid strokeDasharray="3 3" stroke="#cecece" />
+                        <XAxis dataKey="month" stroke="#cecece" />
+                        <Tooltip formatter={ (value => formatCurrency(Number(value))) } />
 
-                    <Line
-                        type="monotone"
-                        dataKey="amountOuput"
-                        name="Saídas"
-                        stroke={lineColorAmountOutput}
-                        strokeWidth={5}
-                        dot={{ r: 5 }}
-                        activeDot={{ r: 8 }} />
+                        <Line
+                            type="monotone"
+                            dataKey="amountEntry"
+                            name="Entradas"
+                            stroke={lineColorAmountEntry}
+                            strokeWidth={5}
+                            dot={{ r: 5 }}
+                            activeDot={{ r: 8 }} />
 
-                </LineChart>
-            </ResponsiveContainer>
+                        <Line
+                            type="monotone"
+                            dataKey="amountOuput"
+                            name="Saídas"
+                            stroke={lineColorAmountOutput}
+                            strokeWidth={5}
+                            dot={{ r: 5 }}
+                            activeDot={{ r: 8 }} />
 
+                    </LineChart>
+                </ResponsiveContainer>
+            </ChartContainer>
         </Container>
     );
 }

@@ -283,10 +283,9 @@ const Dashboard: React.FC = () => {
 
                 {/** Grafico de Historico */}
                 <HistoryBox
-                    data={historyData}
+                    data={historyData}           
                     lineColorAmountEntry="#F7931B"
                     lineColorAmountOutput="#E44C4E" />
-
 
             </Content>
 

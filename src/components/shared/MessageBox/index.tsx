@@ -2,15 +2,12 @@ import React from 'react';
 
 import { Container } from './styles';
 
-
-
 interface IMessageBoxProps {
     title: string;
     description: string;
     footerText: string;
     icon: string
 }
-
 
 const MessageBox: React.FC<IMessageBoxProps> = ({
     title,

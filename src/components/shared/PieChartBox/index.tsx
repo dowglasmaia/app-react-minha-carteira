@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 
 import formatCurrency from '../../../utils/formatCurrency';
 
@@ -52,7 +52,7 @@ const PieChartBox: React.FC<IPieChartsProps> = ({ data }) => (
             {/** Montando o Grafico de Pizza - https://recharts.org/en-US/api/PieChart  */}
             <ResponsiveContainer>
                 <PieChart> 
-                    <Tooltip/>                   
+                   <Tooltip formatter={ (value => formatCurrency(Number(value))) } />                   
                     <Pie
                         data={data}
                         dataKey='value'
