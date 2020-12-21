@@ -6,6 +6,7 @@ import WalletBox from '../../components/shared/CardBox'
 import MessageBox from '../../components/shared/MessageBox';
 import PieCharts from '../../components/shared/PieChartBox'
 import HistoryBox from '../../components/shared/HistoryBox';
+import BarChartBox from '../../components/shared/BarChartBox';
 
 import happyImg from '../../assets/happy.svg';
 import sadImg from '../../assets/sad.svg';
@@ -118,7 +119,7 @@ const Dashboard: React.FC = () => {
     /* Calculando Total do Saldo:  Entradas - Saidas = Saldo */
     const totalSaldo = useMemo(() => {
         return totalRecebimento - totalDespesas;
-    }, [totalRecebimento, totalDespesas])
+    }, [totalRecebimento, totalDespesas]);
 
     const message = useMemo(() => {
         if (totalSaldo < 0) {
@@ -144,7 +145,7 @@ const Dashboard: React.FC = () => {
             }
         }
 
-    }, [totalSaldo])
+    }, [totalSaldo]);
 
 
     /* Montando Dados para Exibir no Grafico */
@@ -173,7 +174,7 @@ const Dashboard: React.FC = () => {
         ]
 
         return data;
-    }, [totalRecebimento, totalDespesas])
+    }, [totalRecebimento, totalDespesas]);
 
     /* Montando dados para Grafico de historico */
     const historyData = useMemo(() => {
@@ -222,12 +223,56 @@ const Dashboard: React.FC = () => {
             .filter(item => {
                 const currentMonth = new Date().getMonth();
                 const currentYear = new Date().getFullYear();
-                return (yearSelected === currentYear && item.monthNumber <= currentMonth) 
-                || (yearSelected < currentYear)
+                return (yearSelected === currentYear && item.monthNumber <= currentMonth)
+                    || (yearSelected < currentYear)
 
             });
 
-    }, [yearSelected])
+    }, [yearSelected]);
+
+    /* realizando coleta de inf para montar grafico com percutnal de entrada e saide por Tipo de Despesas*/
+    const relationExpensesRescurrentVersusEventual = useMemo(() => {
+        let amountRecurrent = 0;
+        let amountEventual = 0;
+
+        expenses
+            .filter(
+                (expense) => {
+                    const date = new Date(expense.date);
+                    const yaer = date.getFullYear();
+                    const month = date.getMonth() + 1;
+
+                    return month === monthSelected && yaer === yearSelected;
+                })
+            .forEach((expense) => {
+                if (expense.frequency === 'recorrent') {
+                    return amountRecurrent += Number(expense.amount);
+                }
+
+                if (expense.frequency === 'eventual') {
+                    return amountEventual += Number(expense.amount);
+                }
+            })
+
+        const total = amountEventual + amountRecurrent;
+        let percent = Number.isNaN(((amountEventual / total) * 100) ? 0 : ((amountEventual / total) * 100));
+
+        return [
+            {
+                name: 'Recorrentes',
+                amount: amountRecurrent,
+                percent: Number(isNaN((amountRecurrent / total) * 100) ? 0 : ((amountRecurrent / total) * 100)).toFixed(1),
+                color: "#F7931B"
+            },
+
+            {
+                name: 'Eventuais',
+                amount: amountEventual,
+                percent: Number(percent).toFixed(1),
+                color: "#E44C4E"
+            }
+        ]
+    }, [monthSelected, yearSelected]);
 
     return (
         <Container>
@@ -283,9 +328,12 @@ const Dashboard: React.FC = () => {
 
                 {/** Grafico de Historico */}
                 <HistoryBox
-                    data={historyData}           
+                    data={historyData}
                     lineColorAmountEntry="#F7931B"
                     lineColorAmountOutput="#E44C4E" />
+
+                {/** Grafico de Tipo de Receitas  com grafico de Barras*/}
+                <BarChartBox />
 
             </Content>
 

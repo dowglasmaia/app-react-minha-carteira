@@ -42,12 +42,12 @@ const HistoryBox: React.FC<IHistoryBoxProps> = ({
             <Header>
                 <h2>Histórico de Movimentação</h2>
                 <LegendContainer>
-                    <Legend key={1} color={lineColorAmountEntry}>
+                    <Legend  color={lineColorAmountEntry}>
                         <div></div>
                         <span>Entrada</span>
                     </Legend>
 
-                    <Legend key={1} color={lineColorAmountOutput}>
+                    <Legend color={lineColorAmountOutput}>
                         <div></div>
                         <span>Saída</span>
                     </Legend>
