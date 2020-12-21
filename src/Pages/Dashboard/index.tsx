@@ -212,12 +212,20 @@ const Dashboard: React.FC = () => {
 
             return {
                 monthNumber: month,
-                month: listOfMonths[month].substr(0, 3),
+                month: listOfMonths[month].substr(0, 3), //mostra so as 03 primerias letras do mes
                 amountEntry,
                 amountOuput
             }
 
         })
+            /* Filtrando para mostra somentos os meses anteriores ate oatual, evitando mostra meses futuros*/
+            .filter(item => {
+                const currentMonth = new Date().getMonth();
+                const currentYear = new Date().getFullYear();
+                return (yearSelected === currentYear && item.monthNumber <= currentMonth) 
+                || (yearSelected < currentYear)
+
+            });
 
     }, [yearSelected])
 
