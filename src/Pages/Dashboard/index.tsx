@@ -3,9 +3,9 @@ import React, { useState, useMemo } from 'react';
 import ContentHeader from '../../components/shared/ContentHeader';
 import SelectInput from '../../components/shared/SelectInput';
 import WalletBox from '../../components/shared/CardBox'
-
 import MessageBox from '../../components/shared/MessageBox';
 import PieCharts from '../../components/shared/PieChartBox'
+import HistoryBox from '../../components/shared/HistoryBox';
 
 import happyImg from '../../assets/happy.svg';
 import sadImg from '../../assets/sad.svg';
@@ -175,6 +175,51 @@ const Dashboard: React.FC = () => {
         return data;
     }, [totalRecebimento, totalDespesas])
 
+    /* Montando dados para Grafico de historico */
+    const historyData = useMemo(() => {
+
+        return listOfMonths.map((_, month) => {
+            let amountEntry = 0;
+            gains.forEach(gain => {
+                const date = new Date(gain.date);
+                const gainMonth = date.getMonth();
+                const gainYear = date.getFullYear();
+
+                if (gainMonth === month && gainYear === yearSelected) {
+                    try {
+                        amountEntry += Number(gain.amount);
+                    } catch {
+                        throw new Error('AmountEntry is invalid.')
+                    }
+                }
+            });
+
+
+            let amountOuput = 0;
+            expenses.forEach(expense => {
+                const date = new Date(expense.date);
+                const expenseMonth = date.getMonth();
+                const expenseYear = date.getFullYear();
+
+                if (expenseMonth === month && expenseYear === yearSelected) {
+                    try {
+                        amountOuput += Number(expense.amount);
+                    } catch {
+                        throw new Error('AmountOutput is invalid.')
+                    }
+                }
+            });
+
+            return {
+                monthNumber: month,
+                month: listOfMonths[month].substr(0, 3),
+                amountEntry,
+                amountOuput
+            }
+
+        })
+
+    }, [yearSelected])
 
     return (
         <Container>
@@ -225,7 +270,15 @@ const Dashboard: React.FC = () => {
                     icon={message.icon}
                 />
 
+                {/**Grafico de Pizza */}
                 <PieCharts data={relationExpensesVersusGains} />
+
+                {/** Grafico de Historico */}
+                <HistoryBox
+                    data={historyData}
+                    lineColorAmountEntry="#F7931B"
+                    lineColorAmountOutput="#E44C4E" />
+
 
             </Content>
 

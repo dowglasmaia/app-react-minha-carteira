@@ -1,12 +1,14 @@
 import React, { PureComponent } from 'react';
 
+import formatCurrency from '../../../utils/formatCurrency';
+
 /* import do graficos   -  https://recharts.org/en-US/guide/getting-started */
 import {
     PieChart,
     Pie,
     Cell,
     ResponsiveContainer,
-    Sector
+    Tooltip
 } from 'recharts';
 
 import {
@@ -37,7 +39,7 @@ const PieChartBox: React.FC<IPieChartsProps> = ({ data }) => (
                 {
                     data.map((indicator) => (
                         <Legend key={indicator.name} color={indicator.color}>
-                            <div>{indicator.percent}</div>
+                            <div>{indicator.percent}%</div>
                             <span>{indicator.name}</span>
                         </Legend>
                     ))
@@ -49,14 +51,23 @@ const PieChartBox: React.FC<IPieChartsProps> = ({ data }) => (
         <SideRight>
             {/** Montando o Grafico de Pizza - https://recharts.org/en-US/api/PieChart  */}
             <ResponsiveContainer>
-                <PieChart>
-                    <Pie data={data} dataKey="percent" innerRadius={25} outerRadius={95} label >
+                <PieChart> 
+                    <Tooltip/>                   
+                    <Pie
+                        data={data}
+                        dataKey='value'
+                        innerRadius={10}
+                        //outerRadius={70}
+                        //label 
+                        cx="50%" 
+                        cy="50%"
+                        >
                         {
                             data.map((indicator) => (
                                 <Cell
                                     key={indicator.name}
                                     fill={indicator.color}
-                                    />
+                                />
                             ))
                         }
                     </Pie>

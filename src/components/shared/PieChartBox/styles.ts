@@ -58,10 +58,11 @@ export const Legend = styled.li<ILegendProps>`
     width: 40px;
     height: 40px;
     border-radius: 5px;
-    font-size: 16px;
+    font-size: 14px;
     line-height: 40px; // do tamanho da caixa para deixar o mesmo centralizado
     text-align: center;
     margin-right: 7px;
+    padding: 2px;
   }
 `;
 
