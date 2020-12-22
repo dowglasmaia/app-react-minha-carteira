@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 
 import ContentHeader from '../../components/shared/ContentHeader';
 import SelectInput from '../../components/shared/SelectInput';
@@ -56,23 +56,24 @@ const Dashboard: React.FC = () => {
     }, []);
 
 
-    const handleMonthSelected = (month: string) => {
+    /* useCallback - memoria A FUNÇÃO*/
+    const handleMonthSelected = useCallback((month: string) => {
         try {
             let parseMonth = Number(month);
             setMonthSelected(parseMonth);
         } catch {
             throw new Error('invalid month value. Is accept 0 -24.');
         }
-    }
+    }, []);
 
-    const handleYaerSelected = (yaer: string) => {
+    const handleYaerSelected = useCallback((yaer: string) => {
         try {
             let parseYaer = Number(yaer);
             setYaerSelected(parseYaer);
         } catch {
             throw new Error('invalid yaer value. Is accept Integer  Number.');
         }
-    }
+    }, []);
 
     /* Calculando o Total de despesas */
     const totalDespesas = useMemo(() => {
