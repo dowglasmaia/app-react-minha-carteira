@@ -1,24 +1,76 @@
 import React from 'react';
 
+import formatCurrency from '../../../utils/formatCurrency';
 
-import { 
-    Container, 
+import {
+    ResponsiveContainer,
+    BarChart,
+    Bar,
+    Cell,
+    Tooltip,
+} from 'recharts';
+
+
+import {
+    Container,
     SideLeft,
     SideRight,
+    LegendContainer,
+    Legend,
 } from './styles';
 
-const BarChartBox: React.FC = () => {
+/*### INTERFACES  ####*/
+interface IBarChartProps {
+    title: string;
+    data: {
+        name: string;
+        amount: number;
+        percent: string;
+        color: string
+    }[];
+}
+
+
+const BarChartBox: React.FC<IBarChartProps> = ({ title, data }) => {
     return (
         <Container>
             <SideLeft>
-
-            <h2>Gráfico de Barras</h2>
+                <h2>{title}</h2>
+                <LegendContainer>
+                    {
+                        data.map((indicator) => (
+                            <Legend key={indicator.name} color={indicator.color}>
+                                <div>{indicator.percent}%</div>
+                                <span>{indicator.name}</span>
+                            </Legend>
+                        ))
+                    }
+                </LegendContainer>
             </SideLeft>
 
             <SideRight>
-                ok
+                {/* montando grafico de barras */}
+                <ResponsiveContainer>
+                    <BarChart data={data}>
+                        <Bar dataKey="amount">
+                            {
+                                data.map((item) => (
+                                    <Cell
+                                        key={item.name}
+                                        cursor="pointer"
+                                        fill={item.color}
+                                    />
+                                ))
+                            }
+                        </Bar>
+                        <Tooltip
+                            formatter={(value => formatCurrency(Number(value)))}
+                            cursor={false}
+                        />
+                    </BarChart>
+                </ResponsiveContainer>
             </SideRight>
-  
+
         </Container>
     );
 }

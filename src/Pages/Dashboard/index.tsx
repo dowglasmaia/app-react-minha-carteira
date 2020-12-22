@@ -245,7 +245,7 @@ const Dashboard: React.FC = () => {
                     return month === monthSelected && yaer === yearSelected;
                 })
             .forEach((expense) => {
-                if (expense.frequency === 'recorrent') {
+                if (expense.frequency === 'recorrente') {
                     return amountRecurrent += Number(expense.amount);
                 }
 
@@ -255,7 +255,8 @@ const Dashboard: React.FC = () => {
             })
 
         const total = amountEventual + amountRecurrent;
-        let percent = Number.isNaN(((amountEventual / total) * 100) ? 0 : ((amountEventual / total) * 100));
+
+        console.log(`O Total é ${total}`)
 
         return [
             {
@@ -263,12 +264,13 @@ const Dashboard: React.FC = () => {
                 amount: amountRecurrent,
                 percent: Number(isNaN((amountRecurrent / total) * 100) ? 0 : ((amountRecurrent / total) * 100)).toFixed(1),
                 color: "#F7931B"
+
             },
 
             {
                 name: 'Eventuais',
                 amount: amountEventual,
-                percent: Number(percent).toFixed(1),
+                percent: Number(isNaN((amountRecurrent / total) * 100) ? 0 : ((amountRecurrent / total) * 100)).toFixed(1),
                 color: "#E44C4E"
             }
         ]
@@ -333,7 +335,9 @@ const Dashboard: React.FC = () => {
                     lineColorAmountOutput="#E44C4E" />
 
                 {/** Grafico de Tipo de Receitas  com grafico de Barras*/}
-                <BarChartBox />
+                <BarChartBox
+                    title="Saídas"
+                    data={relationExpensesRescurrentVersusEventual} />
 
             </Content>
 

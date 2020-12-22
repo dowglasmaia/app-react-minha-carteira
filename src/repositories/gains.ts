@@ -6,6 +6,6 @@ export default [
   { "description": "Freela app",  "amount": "950.92",  "type": "entrada", "frequency": "eventual",   "date": "2020-02-23" }, 
   { "description": "Salário",     "amount": "2500.25", "type": "entrada", "frequency": "recorrente", "date": "2020-03-10" }, 
   { "description": "Salário",     "amount": "2500.18", "type": "entrada", "frequency": "recorrente", "date": "2020-04-10" }, 
-  { "description": "Salário",     "amount": "2500.15", "type": "entrada", "frequency": "recorrente", "date": "2020-12-10" }, 
+  { "description": "Salário",     "amount": "2500.15", "type": "entrada", "frequency": "eventual", "date": "2020-12-10" }, 
   { "description": "Salário",     "amount": "2500.12", "type": "entrada", "frequency": "recorrente", "date": "2020-06-10" }, 
-  { "description": "Salário",     "amount": "2500.00", "type": "entrada", "frequency": "recorrente", "date": "2020-07-10" }]
+  { "description": "Salário",     "amount": "2500.00", "type": "entrada", "frequency": "recorrente", "date": "2020-12-10" }]
