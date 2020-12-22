@@ -25,7 +25,7 @@ interface IBarChartProps {
     data: {
         name: string;
         amount: number;
-        percent: string;
+        percent: number;
         color: string
     }[];
 }

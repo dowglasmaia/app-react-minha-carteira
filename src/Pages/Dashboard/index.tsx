@@ -129,6 +129,13 @@ const Dashboard: React.FC = () => {
                 footerText: 'Verifique seus gastos',
                 icon: sadImg
             }
+        } else if (totalDespesas === 0 && totalRecebimento === 0) {
+            return {
+                title: "Op's!",
+                description: "Neste mês não há registro de entradas ou saídas.",
+                footerText: "Vamos acordo!!!.",
+                icon: happyImg
+            }
         } else if (totalSaldo === 0) {
             return {
                 title: "Ufaa!",
@@ -145,15 +152,18 @@ const Dashboard: React.FC = () => {
             }
         }
 
-    }, [totalSaldo]);
+    }, [totalSaldo, totalDespesas, totalRecebimento]);
 
 
     /* Montando Dados para Exibir no Grafico */
     const relationExpensesVersusGains = useMemo(() => {
 
         const total = totalRecebimento + totalDespesas;
-        const percentualGanhos = Number.isNaN((totalRecebimento / total) * 100) ? 0 : (totalRecebimento / total) * 100;
-        const percentualDespesas = Number.isNaN((totalDespesas / total) * 100) ? 0 : (totalDespesas / total) * 100;
+
+        const percentualGanhos = Number(((totalRecebimento / total) * 100).toFixed(1));
+        const percentualDespesas = Number(((totalDespesas / total) * 100).toFixed(1));
+        //const percentualGanhos = Number.isNaN((totalRecebimento / total) * 100) ? 0 : (totalRecebimento / total) * 100;
+        //const percentualDespesas = Number.isNaN((totalDespesas / total) * 100) ? 0 : (totalDespesas / total) * 100;
 
         console.log(percentualGanhos.toFixed(1), percentualDespesas.toFixed(1))
 
@@ -162,13 +172,13 @@ const Dashboard: React.FC = () => {
             {
                 name: 'Entradas',
                 value: totalRecebimento,
-                percent: Number(percentualGanhos.toFixed(1)),
+                percent: percentualGanhos ? percentualGanhos : 0,
                 color: '#F7931B'
             },
             {
                 name: 'Saídas',
                 value: totalDespesas,
-                percent: Number(percentualDespesas.toFixed(1)),
+                percent: percentualDespesas ? percentualDespesas : 0,
                 color: '#E44C4E'
             }
         ]
@@ -259,6 +269,8 @@ const Dashboard: React.FC = () => {
             })
 
         const total = amountEventual + amountRecurrent;
+        const percentRecurrent = Number(((amountRecurrent / total) * 100).toFixed(1));
+        const percentEventual = Number(((amountEventual / total) * 100).toFixed(1));
 
         console.log(`O Total da Soma é = ${total}`)
 
@@ -266,15 +278,15 @@ const Dashboard: React.FC = () => {
             {
                 name: 'Recorrentes',
                 amount: amountRecurrent,
-                percent: Number(isNaN((amountRecurrent / total) * 100) ? 0 : ((amountRecurrent / total) * 100)).toFixed(1),
+                percent: percentRecurrent ? percentRecurrent : 0,
                 color: "#F7931B"
-
             },
 
             {
                 name: 'Eventuais',
                 amount: amountEventual,
-                percent: Number(isNaN((amountEventual / total) * 100) ? 0 : ((amountEventual / total) * 100)).toFixed(1),
+                percent: percentEventual ? percentEventual : 0,
+                // percent: Number(isNaN((amountEventual / total) * 100) ? 0 : ((amountEventual / total) * 100)).toFixed(1),
                 color: "#E44C4E"
             }
         ]
@@ -309,6 +321,8 @@ const Dashboard: React.FC = () => {
             })
 
         const total = amountEventual + amountRecurrent;
+        const percentRecurrent = Number(((amountRecurrent / total) * 100).toFixed(1));
+        const percentEventual = Number(((amountEventual / total) * 100).toFixed(1));
 
         console.log(`O Total da Soma é = ${total}`)
 
@@ -316,7 +330,7 @@ const Dashboard: React.FC = () => {
             {
                 name: 'Recorrentes',
                 amount: amountRecurrent,
-                percent: Number(isNaN((amountRecurrent / total) * 100) ? 0 : ((amountRecurrent / total) * 100)).toFixed(1),
+                percent: percentRecurrent ? percentRecurrent : 0,
                 color: "#F7931B"
 
             },
@@ -324,7 +338,7 @@ const Dashboard: React.FC = () => {
             {
                 name: 'Eventuais',
                 amount: amountEventual,
-                percent: Number(isNaN((amountEventual / total) * 100) ? 0 : ((amountEventual / total) * 100)).toFixed(1),
+                percent: percentEventual ? percentEventual : 0,
                 color: "#E44C4E"
             }
         ]
