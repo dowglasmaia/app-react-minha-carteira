@@ -280,6 +280,57 @@ const Dashboard: React.FC = () => {
         ]
     }, [monthSelected, yearSelected]);
 
+    /* realizando coleta de inf para montar grafico com percutnal de saide por Tipo de Despesas*/
+    const relationGainsRescurrentVersusEventual = useMemo(() => {
+        let amountRecurrent = 0;
+        let amountEventual = 0;
+
+        gains
+            .filter(
+                (gain) => {
+                    const date = new Date(gain.date);
+                    const yaer = date.getFullYear();
+                    const month = date.getMonth() + 1;
+
+                    return month === monthSelected && yaer === yearSelected;
+                })
+            .forEach((gain) => {
+                if (gain.frequency === 'recorrente') {
+                    const totalRecurrent = amountRecurrent += Number(gain.amount);
+                    console.log(`O totalRecurrent é ${totalRecurrent}`)
+                    return totalRecurrent;
+                }
+
+                if (gain.frequency === 'eventual') {
+                    const totalEventual = amountEventual += Number(gain.amount);
+                    console.log(`O totalEventual é ${totalEventual}`)
+                    return totalEventual;
+                }
+            })
+
+        const total = amountEventual + amountRecurrent;
+
+        console.log(`O Total da Soma é = ${total}`)
+
+        return [
+            {
+                name: 'Recorrentes',
+                amount: amountRecurrent,
+                percent: Number(isNaN((amountRecurrent / total) * 100) ? 0 : ((amountRecurrent / total) * 100)).toFixed(1),
+                color: "#F7931B"
+
+            },
+
+            {
+                name: 'Eventuais',
+                amount: amountEventual,
+                percent: Number(isNaN((amountEventual / total) * 100) ? 0 : ((amountEventual / total) * 100)).toFixed(1),
+                color: "#E44C4E"
+            }
+        ]
+    }, [monthSelected, yearSelected]);
+
+
     return (
         <Container>
             <ContentHeader title="Dashboard" lineColor="#F7931B">
@@ -338,10 +389,15 @@ const Dashboard: React.FC = () => {
                     lineColorAmountEntry="#F7931B"
                     lineColorAmountOutput="#E44C4E" />
 
-                {/** Grafico de Tipo de Receitas  com grafico de Barras*/}
+                {/** Grafico de Barra - Saidas - Tipo de Receitas */}
                 <BarChartBox
                     title="Saídas"
                     data={relationExpensesRescurrentVersusEventual} />
+
+                {/** Grafico de Barra - Entradas - Tipo de Receitas */}
+                <BarChartBox
+                    title="Entradas"
+                    data={relationGainsRescurrentVersusEventual} />
 
             </Content>
 
