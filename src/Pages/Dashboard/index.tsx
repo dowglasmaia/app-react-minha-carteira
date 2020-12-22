@@ -230,7 +230,7 @@ const Dashboard: React.FC = () => {
 
     }, [yearSelected]);
 
-    /* realizando coleta de inf para montar grafico com percutnal de entrada e saide por Tipo de Despesas*/
+    /* realizando coleta de inf para montar grafico com percutnal de saide por Tipo de Despesas*/
     const relationExpensesRescurrentVersusEventual = useMemo(() => {
         let amountRecurrent = 0;
         let amountEventual = 0;
@@ -246,17 +246,21 @@ const Dashboard: React.FC = () => {
                 })
             .forEach((expense) => {
                 if (expense.frequency === 'recorrente') {
-                    return amountRecurrent += Number(expense.amount);
+                    const totalRecurrent = amountRecurrent += Number(expense.amount);
+                    console.log(`O totalRecurrent é ${totalRecurrent}`)
+                    return totalRecurrent;
                 }
 
                 if (expense.frequency === 'eventual') {
-                    return amountEventual += Number(expense.amount);
+                    const totalEventual = amountEventual += Number(expense.amount);
+                    console.log(`O totalEventual é ${totalEventual}`)
+                    return totalEventual;
                 }
             })
 
         const total = amountEventual + amountRecurrent;
 
-        console.log(`O Total é ${total}`)
+        console.log(`O Total da Soma é = ${total}`)
 
         return [
             {
@@ -270,7 +274,7 @@ const Dashboard: React.FC = () => {
             {
                 name: 'Eventuais',
                 amount: amountEventual,
-                percent: Number(isNaN((amountRecurrent / total) * 100) ? 0 : ((amountRecurrent / total) * 100)).toFixed(1),
+                percent: Number(isNaN((amountEventual / total) * 100) ? 0 : ((amountEventual / total) * 100)).toFixed(1),
                 color: "#E44C4E"
             }
         ]
