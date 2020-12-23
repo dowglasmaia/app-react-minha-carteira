@@ -175,8 +175,7 @@ const List: React.FC<IRouteParams> = ({ match }) => {
                 <button
                     type="button"
                     className=
-                    {`tag-filter tag-recorrentes
-                            ${selectedFrequency.includes('recorrente') && 'tag-actived'} 
+                    {`tag-filter tag-recorrentes ${selectedFrequency.includes('recorrente') && 'tag-actived'} 
                         `}
                     onClick={() => handleFrequencyClick('recorrente')}
                 >

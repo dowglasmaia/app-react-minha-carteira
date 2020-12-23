@@ -1,8 +1,32 @@
 import React from 'react';
 
+import { 
+    Container, 
+    Logo , 
+    Form,
+    FormTitle, } from './styles';
+
+import logoImg from '../../assets/logo.svg';
+
 const Signin: React.FC = () => {
     return (
-        <h3>Signin</h3>
+        <Container>
+          <Logo>
+            <img src={logoImg} alt="Minha Carteira"/>
+            <h2>Minha Carteira</h2>
+          </Logo>
+
+          <Form>
+              <FormTitle> Entra </FormTitle>
+
+              <input type="text"></input>
+              <input type="text"></input>
+
+                <button type="submit">Acessar</button>
+
+          </Form>
+
+        </Container>
     );
 }
 

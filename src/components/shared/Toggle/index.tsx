@@ -2,13 +2,9 @@ import React from 'react';
 
 import { Container, ToggleLabel, ToggleSelector } from './style';
 
+import {IToggleProps} from './toggle.model';
 
-interface IToggleProps {
-    labelLeft: string;
-    labelRight: string;
-    checked: boolean;
-    onChange(): void;
-}
+
 
 /* Componente de Troca de Valor do Thema */
 const Toggle: React.FC<IToggleProps> = ({
