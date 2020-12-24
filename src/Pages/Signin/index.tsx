@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import {
     Container,
@@ -13,7 +13,15 @@ import logoImg from '../../assets/logo.svg';
 import Input from '../../components/shared/Input';
 import MyButton from '../../components/shared/Button';
 
+import { useAuth } from '../../hooks/auth';
+
 const Signin: React.FC = () => {
+
+    const [email, setEmail] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
+
+    const { signIn } = useAuth();
+
     return (
         <Container>
             <Logo>
@@ -21,16 +29,24 @@ const Signin: React.FC = () => {
                 <h2>Minha Carteira</h2>
             </Logo>
 
-            <Form onSubmit={() => { }}>
+            <Form onSubmit={() => signIn(email, password)}>
                 <FormTitle> Entra </FormTitle>
 
-                <Input type="email" placeholder="e-mail" required />
+                <Input
+                    onChange={(e) => setEmail(e.target.value)}
+                    type="email"
+                    placeholder="e-mail"
+                    required />
 
-                <Input type="password" placeholder="senha" required />
+                <Input
+                    onChange={(e) => setPassword(e.target.value)}
+                    type="password"
+                    placeholder="senha"
+                    required />
 
                 <MyButton type="submit">Acessar</MyButton>
 
-                
+
 
             </Form>
 

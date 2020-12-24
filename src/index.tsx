@@ -6,12 +6,18 @@ import App from './App';
 /* importando o provider do hook personalizado */
 import { ThemeProvider } from './hooks/theme';
 
+import { AuthProvider } from './hooks/auth';
+
 
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider>
 
-      <App />
+      <AuthProvider>
+
+        <App />
+
+      </AuthProvider>
 
     </ThemeProvider>
   </React.StrictMode>,
