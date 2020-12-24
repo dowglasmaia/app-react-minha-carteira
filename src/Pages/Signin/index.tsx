@@ -1,30 +1,38 @@
 import React from 'react';
 
-import { 
-    Container, 
-    Logo , 
+import {
+    Container,
+    Logo,
     Form,
-    FormTitle, } from './styles';
+    FormTitle,
+} from './styles';
 
 import logoImg from '../../assets/logo.svg';
+
+/* MY COMPONENTS  */
+import Input from '../../components/shared/Input';
+import MyButton from '../../components/shared/Button';
 
 const Signin: React.FC = () => {
     return (
         <Container>
-          <Logo>
-            <img src={logoImg} alt="Minha Carteira"/>
-            <h2>Minha Carteira</h2>
-          </Logo>
+            <Logo>
+                <img src={logoImg} alt="Minha Carteira" />
+                <h2>Minha Carteira</h2>
+            </Logo>
 
-          <Form>
-              <FormTitle> Entra </FormTitle>
+            <Form onSubmit={() => { }}>
+                <FormTitle> Entra </FormTitle>
 
-              <input type="text"></input>
-              <input type="text"></input>
+                <Input type="email" placeholder="e-mail" required />
 
-                <button type="submit">Acessar</button>
+                <Input type="password" placeholder="senha" required />
 
-          </Form>
+                <MyButton type="submit">Acessar</MyButton>
+
+                
+
+            </Form>
 
         </Container>
     );

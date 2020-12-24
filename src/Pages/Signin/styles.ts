@@ -15,13 +15,13 @@ export const Logo = styled.div`
   align-items: center;
   margin-bottom: 30px;
 
-  > h3 {
+  > h2 {
     color: ${(props) => props.theme.colors.white};
     margin-left: 7px;
   }
   > img {
-    width: 35px;
-    height: 35px;
+    width: 40px;
+    height: 40px;
   }
 `;
 
@@ -35,7 +35,8 @@ export const Form = styled.form`
   background-color: ${(props) => props.theme.colors.tertiary};
 `;
 
-export const FormTitle = styled.h2`
+export const FormTitle = styled.h1`
+  margin-bottom: 40px;
   color: ${(props) => props.theme.colors.white};
 
   // o & referencia o propio Elemento.
