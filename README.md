@@ -44,6 +44,9 @@
 
 * ### https://recharts.org/en-US/
 
+
+* ### Preview da responsividade:  https://responsively.app/download/
+
 * #### conf uteis.
 ```
   "explorer.compactFolders":false ,
