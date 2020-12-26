@@ -54,14 +54,15 @@ const WalletBox: React.FC<IWalletBoxProps> = ({
         <Container color={color}>
             <span>{title}</span>
             <h1>
+                <strong>R$ </strong>
+
                 {/* biblioteca para formata e da efeitos a valores monetarios e numericos */}
                 <CountUp
-                end={amount}
-                prefix={"RS "}
-                separator="."
-                decimal=","
-                decimals={2}
-                preserveValue={true}                
+                    end={amount}
+                    separator="."
+                    decimal=","
+                    decimals={2}
+                    preserveValue={true}
                 />
             </h1>
             <small>{footerLabel}</small>
