@@ -32,10 +32,9 @@ export const MenuContainer = styled.nav`
 `;
 
 export const MenuItemLink = styled.a`
-  color: ${(propos) => propos.theme.colors.white};
+  color: ${(props) => props.theme.colors.info};
   text-decoration: none;
   margin: 7px 0;
-  color: ${(props) => props.theme.colors.info};
   transition: opacity 0.3s;
   display: flex;
   align-items: center;
@@ -50,5 +49,28 @@ export const MenuItemLink = styled.a`
     font-size: 20px;
     margin-right: 5px;
   }
+`;
+
+export const MenuItemButton = styled.button`
+  color: ${(props) => props.theme.colors.info};
   
+  background: none;
+  border:none;
+ 
+  margin: 7px 0;
+  transition: opacity 0.3s;
+  display: flex;
+  align-items: center;
+  font-size:16px;
+
+  /* a mesma coisa de a:hover */
+  &:hover {
+    opacity: 0.7;
+  }
+
+  /* Manipulando os Icons dentro do Link */
+  > svg {
+    font-size: 20px;
+    margin-right: 5px;
+  }
 `;
