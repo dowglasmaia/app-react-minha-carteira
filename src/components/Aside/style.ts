@@ -4,6 +4,10 @@ interface IContainerPorps {
   menuIsOpen: Boolean;
 }
 
+interface ICThemeToggleFooterPorps {
+  menuIsOpen: Boolean;
+}
+
 export const Container = styled.div<IContainerPorps>`
   grid-area: AS;
   color: ${(props) => props.theme.colors.white};
@@ -19,7 +23,7 @@ export const Container = styled.div<IContainerPorps>`
   @media (max-width: 600px) {
     margin-left: 7px;
     position: fixed;
-    z-index: 2;  
+    z-index: 2;
     width: 170px;
 
     //coloando a height de acordo com a validação do menu
@@ -128,5 +132,15 @@ export const ToggleMenu = styled.button`
     display: flex;
     width: 40px;
     height: 40px;
+  }
+`;
+
+export const ThemeToggleFooter = styled.footer<ICThemeToggleFooterPorps>`
+  display: none;
+  position: absolute;
+  bottom: 30px;
+
+  @media (max-width: 550px) {
+    display: ${(props) => (props.menuIsOpen ? "flex" : "none")};
   }
 `;

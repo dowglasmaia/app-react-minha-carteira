@@ -1,8 +1,11 @@
-import React,{useState} from 'react';
+import React, { useState } from 'react';
 
 import logoImg from '../../assets/logo.svg'
 
 import { useAuth } from '../../hooks/auth';
+import { useTheme } from '../../hooks/theme';
+
+import Toggle from '../shared/Toggle';
 
 
 /* icons da aplicação: https://react-icons.github.io/icons?name=md*/
@@ -24,26 +27,36 @@ import {
     MenuContainer,
     MenuItemLink,
     MenuItemButton,
-    ToggleMenu
+    ToggleMenu,
+    ThemeToggleFooter
 } from './style';
-
 
 
 const Aside: React.FC = () => {
     
-    const[toggleMenuIsOpen, setToggleMenuIsOpen]=useState(false);
-
     const { signOut } = useAuth();
+    const { toggleTheme, theme } = useTheme();
+    
+    const [toggleMenuIsOpen, setToggleMenuIsOpen] = useState(false);
 
-    const handleToggleMenu = () =>{
+    const [darkTheme, setDarkTheme] = useState(() => theme.title === 'dark' ? true : false);
+
+    const handleToggleMenu = () => {
         setToggleMenuIsOpen(!toggleMenuIsOpen); // guarda o estado do butão
     }
 
+     //mudando a cor do thema
+     const handleChangeTheme = () => {
+        setDarkTheme(!darkTheme);
+        toggleTheme();
+    }
+
+
     return (
-        <Container menuIsOpen ={toggleMenuIsOpen}>
+        <Container menuIsOpen={toggleMenuIsOpen}>
 
             <ToggleMenu onClick={handleToggleMenu}>
-                {toggleMenuIsOpen ? <MdClose/> : <MdMenu/>}
+                {toggleMenuIsOpen ? <MdClose /> : <MdMenu />}
             </ToggleMenu>
 
             <Header>
@@ -71,6 +84,15 @@ const Aside: React.FC = () => {
                 </MenuItemButton>
 
             </MenuContainer>
+
+            <ThemeToggleFooter menuIsOpen={toggleMenuIsOpen}>
+            <Toggle
+                labelLeft="Light"
+                labelRight="Dark"
+                checked={darkTheme}
+                onChange={handleChangeTheme}
+            />
+            </ThemeToggleFooter>
 
         </Container>
     );
