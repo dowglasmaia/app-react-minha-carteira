@@ -16,7 +16,7 @@ export const Container = styled.div<IContainerPorps>`
   border-right: 1px solid ${(props) => props.theme.colors.gray};
   padding-left: 10px;
 
-  width: 260px;
+  width: 250px;
 
   position: relative;
 
@@ -25,17 +25,17 @@ export const Container = styled.div<IContainerPorps>`
     position: fixed;
     z-index: 2;
     width: 170px;
+    transition: opacity .7s;
+    opacity: .98;
 
     //coloando a height de acordo com a validação do menu
     height: ${(props) => (props.menuIsOpen ? "100vh" : "70px")};
     overflow: hidden;
 
-    ${(props) =>
-      !props.menuIsOpen &&
-      css`
+    ${(props) => !props.menuIsOpen &&  css`
         // se o menu não estar aberto coloca este css
         border: none;
-        border-bottom: 1px solid ${(props) => props.theme.colors.gray};
+        border-bottom: 1px solid ${props.theme.colors.gray};
       `};
   }
 `;
