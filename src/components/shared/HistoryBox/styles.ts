@@ -21,6 +21,10 @@ export const Container = styled.div`
 export const ChartContainer = styled.div`
   flex: 1;
   height: 270px;
+
+  @media (max-width: 420px) {
+    height: 180px;
+  } // Fim @media 1200px
 `;
 
 export const Header = styled.header`

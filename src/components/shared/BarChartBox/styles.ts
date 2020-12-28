@@ -13,6 +13,11 @@ export const Container = styled.div`
   border-radius: 7px;
 
   display: flex;
+
+  @media (max-width: 770px) {
+    width: 100%;
+    
+  }
 `;
 
 /* area da legenda */
