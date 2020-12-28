@@ -1,4 +1,20 @@
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
+
+
+/* Trabalhando com Animações */
+const animate = keyframes`
+  0%{
+    transform:translateX(-100px);
+    opacity:0;
+  }
+  50%{
+    opacity:0.3;
+  }
+  100%{
+    transform:translateX(0px);
+    opacity:1;
+  }
+`
 
 interface ILegendProps {
   color?: string;
@@ -16,6 +32,8 @@ export const Container = styled.div`
   padding: 20px 20px;
 
   border-radius: 7px;
+
+  animation:${animate} .6s;
 `;
 
 export const ChartContainer = styled.div`
