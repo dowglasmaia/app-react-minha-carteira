@@ -15,8 +15,9 @@ export const Container = styled.div`
   display: flex;
 
   @media (max-width: 770px) {
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    
   }
 `;
 
@@ -40,6 +41,11 @@ export const LegendContainer = styled.ul`
 
   ::-webkit-scrollbar-track {
     background-color: ${(props) => props.theme.colors.tertiary};
+  }
+
+  @media (max-width: 770px) {
+    display: flex;
+    height: auto;
   }
 `;
 
