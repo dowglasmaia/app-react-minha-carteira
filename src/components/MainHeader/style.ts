@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+import ToggleComponent from "../shared/Toggle";
+
 export const Container = styled.div`
   grid-area: MH;
   color: ${(props) => props.theme.colors.white};
@@ -16,14 +18,14 @@ export const Container = styled.div`
 export const Profile = styled.div`
   //display:flex;
   //flex-direction:row;
-  color: ${props =>props.theme.colors.white};
-
+  color: ${(props) => props.theme.colors.white};
 `;
 
-export const Welcome = styled.h3`
+export const Welcome = styled.h3``;
 
-`;
+export const UserName = styled.span``;
 
-export const UserName = styled.span`
+//estilizando um component
+export const Toggle = styled(ToggleComponent)`
 
 `;

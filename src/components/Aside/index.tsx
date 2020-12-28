@@ -25,12 +25,13 @@ import {
 } from './style';
 
 
+
 const Aside: React.FC = () => {
 
     const { signOut } = useAuth();
 
     return (
-        <Container>
+        <Container menuIsOpen ={true}>
             <Header>
                 <LogImg src={logoImg} alt="Logo Minha Carteira" />
                 <Title>Minha Carteira</Title>
