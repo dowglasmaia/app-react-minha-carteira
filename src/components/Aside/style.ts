@@ -12,14 +12,15 @@ export const Container = styled.div<IContainerPorps>`
   border-right: 1px solid ${(props) => props.theme.colors.gray};
   padding-left: 10px;
 
-  width: 170px;
+  width: 260px;
 
   position: relative;
 
   @media (max-width: 600px) {
     margin-left: 7px;
     position: fixed;
-    z-index: 2;
+    z-index: 2;  
+    width: 170px;
 
     //coloando a height de acordo com a validação do menu
     height: ${(props) => (props.menuIsOpen ? "100vh" : "70px")};
@@ -54,9 +55,8 @@ export const LogImg = styled.img`
   height: 40px;
   width: 40px;
 
-  @media (max-width: 600px) {
-    height: 25px;
-    width: 25px;
+  @media (max-width: 790px) {
+    display: none;
   }
 `;
 
@@ -107,5 +107,26 @@ export const MenuItemButton = styled.button`
   > svg {
     font-size: 20px;
     margin-right: 5px;
+  }
+`;
+export const ToggleMenu = styled.button`
+  background-color: ${(props) => props.theme.colors.warning};
+  color: ${(props) => props.theme.colors.white};
+  border-radius: 5px;
+  font-size: 22px;
+  transition: opacity 0.3s;
+  justify-content: center;
+  align-items: center;
+
+  display: none;
+
+  :hover {
+    opacity: 0.7;
+  }
+
+  @media (max-width: 790px) {
+    display: flex;
+    width: 40px;
+    height: 40px;
   }
 `;

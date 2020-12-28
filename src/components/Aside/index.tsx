@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 
 import logoImg from '../../assets/logo.svg'
 
@@ -10,7 +10,9 @@ import {
     MdDashboard,
     MdSubdirectoryArrowRight,
     MdSubdirectoryArrowLeft,
-    MdExitToApp
+    MdExitToApp,
+    MdClose,
+    MdMenu
 } from 'react-icons/md';
 
 /* Componentes */
@@ -21,17 +23,29 @@ import {
     Title,
     MenuContainer,
     MenuItemLink,
-    MenuItemButton
+    MenuItemButton,
+    ToggleMenu
 } from './style';
 
 
 
 const Aside: React.FC = () => {
+    
+    const[toggleMenuIsOpen, setToggleMenuIsOpen]=useState(false);
 
     const { signOut } = useAuth();
 
+    const handleToggleMenu = () =>{
+        setToggleMenuIsOpen(!toggleMenuIsOpen); // guarda o estado do butão
+    }
+
     return (
-        <Container menuIsOpen ={true}>
+        <Container menuIsOpen ={toggleMenuIsOpen}>
+
+            <ToggleMenu onClick={handleToggleMenu}>
+                {toggleMenuIsOpen ? <MdClose/> : <MdMenu/>}
+            </ToggleMenu>
+
             <Header>
                 <LogImg src={logoImg} alt="Logo Minha Carteira" />
                 <Title>Minha Carteira</Title>
