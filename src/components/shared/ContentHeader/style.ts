@@ -14,6 +14,11 @@ export const Container = styled.div`
   justify-content: space-between;
 
   margin-bottom: 25px;
+
+  @media (max-width: 410px) {
+    word-wrap: break-word;
+    flex-direction: column;
+  }
 `;
 
 export const TitleContainer = styled.div<ITitleContainerProps>`
@@ -29,6 +34,13 @@ export const TitleContainer = styled.div<ITitleContainerProps>`
       border-bottom: 10px solid ${(propos) => propos.lineColor};
     }
   }
+
+  @media (max-width: 410px) {
+    > h1 {
+      margin-bottom:15px;
+    }
+  }
+
 `;
 
 export const Controllers = styled.div`
