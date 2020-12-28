@@ -1,11 +1,11 @@
 import styled, { css } from "styled-components";
 
 interface IContainerPorps {
-  menuIsOpen: Boolean;
+  menuIsOpen: boolean;
 }
 
 interface ICThemeToggleFooterPorps {
-  menuIsOpen: Boolean;
+  menuIsOpen: boolean;
 }
 
 export const Container = styled.div<IContainerPorps>`
@@ -25,15 +25,15 @@ export const Container = styled.div<IContainerPorps>`
     position: fixed;
     z-index: 2;
     width: 170px;
-    transition: opacity .7s;
-    opacity: .98;
+    transition: opacity 0.7s;
+    opacity: 0.98;
 
     //coloando a height de acordo com a validação do menu
     height: ${(props) => (props.menuIsOpen ? "100vh" : "70px")};
     overflow: hidden;
 
-    ${(props) => !props.menuIsOpen &&  css`
-        // se o menu não estar aberto coloca este css
+    ${(props) => !props.menuIsOpen && css`
+    // se o menu não estar aberto coloca este css
         border: none;
         border-bottom: 1px solid ${props.theme.colors.gray};
       `};
@@ -59,7 +59,7 @@ export const LogImg = styled.img`
   height: 40px;
   width: 40px;
 
-  @media (max-width: 790px) {
+  @media (max-width: 600px) {
     display: none;
   }
 `;
@@ -128,7 +128,7 @@ export const ToggleMenu = styled.button`
     opacity: 0.7;
   }
 
-  @media (max-width: 790px) {
+  @media (max-width: 600px) {
     display: flex;
     width: 40px;
     height: 40px;

@@ -15,10 +15,10 @@ export const Container = styled.div`
 
   margin-bottom: 25px;
 
-  @media (max-width: 410px) {
+  /* @media (max-width: 410px) {
     word-wrap: break-word;
     flex-direction: column;
-  }
+  }*/
 `;
 
 export const TitleContainer = styled.div<ITitleContainerProps>`
@@ -37,10 +37,21 @@ export const TitleContainer = styled.div<ITitleContainerProps>`
 
   @media (max-width: 410px) {
     > h1 {
-      margin-bottom:15px;
+      font-size: 24px;
+      /* Mostrada Depois da descrição . neste caso uma borda abaixo do texto. */
+      &::after {
+        content: "";
+        display: block;
+        width: 35px;
+        border-bottom: 7px solid ${(propos) => propos.lineColor};
+      }
     }
   }
-
+  /*@media (max-width: 410px) {
+    > h1 {
+      margin-bottom:15px;
+    }
+  }*/
 `;
 
 export const Controllers = styled.div`

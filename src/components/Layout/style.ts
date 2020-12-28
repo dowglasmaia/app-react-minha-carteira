@@ -17,6 +17,7 @@ export const Grid = styled.div`
     "AS CT";
 
   height: 100vh;
+  min-width: 350px;
 
   /* Escondendo o Asside em telas menor ou igual a 600 */
   @media (max-width: 600px) {
