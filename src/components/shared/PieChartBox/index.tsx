@@ -19,6 +19,7 @@ import {
     SideRight
 } from './styles';
 
+
 interface IPieChartsProps {
     data: {
         name: string,

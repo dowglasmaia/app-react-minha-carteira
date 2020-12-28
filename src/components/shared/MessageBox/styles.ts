@@ -1,4 +1,19 @@
-import styled from "styled-components";
+import styled,{keyframes} from "styled-components";
+
+/* Trabalhando com Animações */
+const animate = keyframes`
+  0%{
+    transform:translateX(-100px);
+    opacity:0;
+  }
+  50%{
+    opacity:0.3;
+  }
+  100%{
+    transform:translateX(0px);
+    opacity:1;
+  }
+`
 
 export const Container = styled.div`
   width: 48%;
@@ -13,6 +28,11 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column; // para ficar os dados um abaixo do outro.
   justify-content: space-between;
+
+
+  //animação:
+    animation:${animate} .5s;
+
 
   > Header img {
     margin-left: 7px;
