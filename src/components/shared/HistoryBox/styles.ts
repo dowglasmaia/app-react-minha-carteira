@@ -1,4 +1,20 @@
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
+
+
+/* Trabalhando com Animações */
+const animate = keyframes`
+  0%{
+    transform:translateX(-100px);
+    opacity:0;
+  }
+  50%{
+    opacity:0.3;
+  }
+  100%{
+    transform:translateX(0px);
+    opacity:1;
+  }
+`
 
 interface ILegendProps {
   color?: string;
@@ -16,11 +32,17 @@ export const Container = styled.div`
   padding: 20px 20px;
 
   border-radius: 7px;
+
+  animation:${animate} .6s;
 `;
 
 export const ChartContainer = styled.div`
   flex: 1;
   height: 270px;
+
+  @media (max-width: 420px) {
+    height: 180px;
+  } // Fim @media 1200px
 `;
 
 export const Header = styled.header`
@@ -31,6 +53,10 @@ export const Header = styled.header`
     margin-bottom: 20px;
     padding-left: 17px;
   }
+
+  @media (max-width: 1200px) {
+    flex-direction: column;
+  } // Fim @media 1200px
 `;
 
 export const LegendContainer = styled.ul`
@@ -56,4 +82,11 @@ export const Legend = styled.li<ILegendProps>`
     margin-right: 7px;
     padding: 2px;
   }
+
+  @media (max-width: 770px) {
+    > div {
+      width: 30px;
+      height: 30px;
+    }
+  } // Fim @media 770px
 `;

@@ -11,19 +11,26 @@ export const Container = styled.div`
 
   padding: 0 10px;
   border-bottom: 1px solid ${(props) => props.theme.colors.gray};
+
+
 `;
 
 export const Profile = styled.div`
-  //display:flex;
-  //flex-direction:row;
-  color: ${props =>props.theme.colors.white};
+  color: ${(props) => props.theme.colors.white};
 
+  @media (max-width: 600px) {
+    flex: 1;
+    text-align: end;
+    padding-right: 10px;
+  }
 `;
 
-export const Welcome = styled.h3`
+export const Welcome = styled.h3``;
 
-`;
+export const UserName = styled.span``;
 
-export const UserName = styled.span`
-
+export const ToggleContainer = styled.div`
+  @media (max-width: 600px) {
+    display: none;
+  }
 `;

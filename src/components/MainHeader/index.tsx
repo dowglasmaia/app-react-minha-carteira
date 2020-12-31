@@ -1,14 +1,17 @@
 import React, { useMemo, useState } from 'react';
 
 import emojis from '../../utils/emojis';
-import Toggle from '../shared/Toggle';
+
+import Toggle from "../shared/Toggle";
+
 import { useTheme } from '../../hooks/theme';
 
 import {
     Container,
     Profile,
     Welcome,
-    UserName
+    UserName,
+    ToggleContainer
 } from './style';
 
 const MainHeader: React.FC = () => {
@@ -35,12 +38,15 @@ const MainHeader: React.FC = () => {
 
     return (
         <Container>
+            <ToggleContainer>
             <Toggle
                 labelLeft="Light"
                 labelRight="Dark"
                 checked={darkTheme}
                 onChange={handleChangeTheme}
             />
+
+            </ToggleContainer>
 
             <Profile>
                 <Welcome>Olá, {emoji}</Welcome>

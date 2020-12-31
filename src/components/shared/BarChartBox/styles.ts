@@ -1,4 +1,20 @@
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
+
+
+/* Trabalhando com Animações */
+const animate = keyframes`
+  0%{
+    transform:translateX(-100px);
+    opacity:0;
+  }
+  50%{
+    opacity:0.3;
+  }
+  100%{
+    transform:translateX(0px);
+    opacity:1;
+  }
+`
 
 interface ILegendProps {
   color: string;
@@ -13,6 +29,14 @@ export const Container = styled.div`
   border-radius: 7px;
 
   display: flex;
+
+  animation:${animate} .5s;
+
+  @media (max-width: 770px) {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
 `;
 
 /* area da legenda */
@@ -35,6 +59,11 @@ export const LegendContainer = styled.ul`
 
   ::-webkit-scrollbar-track {
     background-color: ${(props) => props.theme.colors.tertiary};
+  }
+
+  @media (max-width: 770px) {
+    display: flex;
+    height: auto;
   }
 `;
 

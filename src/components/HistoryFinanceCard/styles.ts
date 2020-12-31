@@ -1,4 +1,20 @@
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
+
+
+/* Trabalhando com Animações */
+const animate = keyframes`
+  0%{
+    transform:translateX(-100px);
+    opacity:0;
+  }
+  50%{
+    opacity:0.3;
+  }
+  100%{
+    transform:translateX(0px);
+    opacity:1;
+  }
+`
 
 interface ITagProps {
   color: string;
@@ -16,6 +32,8 @@ export const ContainerHistory = styled.li`
   align-items: center;
   cursor: pointer;
   position: relative;
+
+  animation:${animate} .5s ease-ease-out;
 
   /* efeito de transição */
   transition: all 0.3s;

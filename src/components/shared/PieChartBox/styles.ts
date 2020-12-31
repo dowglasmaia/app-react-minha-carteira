@@ -1,8 +1,24 @@
-import styled from "styled-components";
+import styled,{keyframes} from "styled-components";
 
 interface ILegendProps {
   color: string;
 }
+
+
+/* Trabalhando com Animações */
+const animate = keyframes`
+  0%{
+    transform:translateX(100px);
+    opacity:0;
+  }
+  50%{
+    opacity:0.3;
+  }
+  100%{
+    transform:translateX(0px);
+    opacity:1;
+  }
+`
 
 /* container */
 export const Container = styled.div`
@@ -13,6 +29,30 @@ export const Container = styled.div`
   margin: 10px 0;
   border-radius: 7px;
   display: flex;
+
+  animation:${animate} .5s;
+
+  
+  /* */
+  @media (max-width: 770px) {
+    width: 100%;
+    min-height: 160px;
+    max-height: 260px;
+
+    > header h1 {
+      font-size: 35px;
+
+      img {
+        height: 35px;
+        width: 35px;
+      }
+    }
+
+    > header p,
+    > footer span {
+      font-size: 20;
+    }
+  } // end @media - 770px
 `;
 
 /* area esquerda*/
