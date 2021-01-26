@@ -1,5 +1,7 @@
 # App Minha Carteira com React e TypeScript
 
+### npm install -g create-react-app
+
 * Create React App Com TypeScript [Create React App](https://create-react-app.dev/docs/adding-typescript/). 
 
 
